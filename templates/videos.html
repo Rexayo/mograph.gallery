@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mograph.gallery</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+
+    <h2> testing the extension from base</h2>
     {% for video in videos%}
     {{video.video_name}}<br>
     {{video.video_description}}<br>
@@ -13,5 +9,5 @@
     {{video.created_by}}<br>
     {{video.sound_by}}<br>
     {% endfor %}
-</body>
-</html>
+
+{% endblock %}
