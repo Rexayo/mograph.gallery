@@ -1,3 +1,95 @@
-body {
-    background-color: rgb(179, 179, 179);
+/*----------------------------------------------Google fonts start here----------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;700;800&display=swap');
+/*----------------------------------------------Google fonts end here----------------------------------------*/
+
+/*--- utilities start here--- */
+
+.page-margin {
+    margin-left: 7vw;
+    margin-right: 7vw;
+    margin-top: 3vw;
 }
+
+.extra-bold {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+}
+
+/* nav-bar */
+
+header {
+    font-family: 'Manrope', sans-serif;
+}
+
+header li {
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+#logo{
+    font-size: 1.9em;
+}
+
+#logo-dot{
+    color: yellow;
+}
+#brainstorm{
+    font-size: 5em;
+}
+#search{
+    border-radius: 3px;
+    border-bottom: 1px solid grey;
+    width: 250px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+#search-bar{
+   margin-top: 0;
+
+}
+
+#search:focus {
+    background-color: black;
+    border-bottom: 1px solid yellow;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+}
+
+#search-icon{
+    margin-left: -15px;
+    color:yellow;
+}
+
+.btn, #mobile-demo .btn{
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    text-transform: none;
+    font-size: 1em;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    letter-spacing: normal;
+    border-radius: 0;
+}
+
+.btn:hover,#mobile-demo .btn:hover {
+    background-color: yellow;
+    color: black;
+}
+
+#mobile-demo {
+    background-color: black;
+   
+}
+#mobile-demo a{
+    color:white;
+    font-size: 1.15em; 
+}
+#mobile-demo .btn{
+    font-size: 1.15em; 
+}
+#mobile-demo a:hover{
+    background-color: rgb(27, 27, 27);
+}
+

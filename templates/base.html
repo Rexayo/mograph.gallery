@@ -14,13 +14,49 @@
     <!--materialize-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-        type="text/css"/> 
+        type="text/css" />
     <link rel="stylesheet" href="{{ url_for( 'static', filename='css/style.css') }}" type="text/css" />
 
 
     <title>mograph.gallery</title>
 </head>
-<body>
+
+<body class="black">
+    <header>
+        <!-- navbar -->
+        <nav class="black">
+            <div class="nav-wrapper page-margin ">
+                <a href="{{ url_for('get_videos')}}" class="brand-logo extra-bold left" id="logo">mograph<span id="logo-dot">.</span>gallery</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a class="btn extra-bold">Serendipitous?</a></li>
+                    <li><a href="#">Discover</a></li>
+                    <li><a href="#">Sign up</a></li>
+                    <li><a href="#">Log in</a></li>
+                </ul>
+            </div>
+        </nav>
+    
+        <!-- search bar -->
+        <div class="nav-wrapper">
+            <form class="page-margin" id="search-bar">
+                <div class="input-field">
+                    <input id="search" type="search" required>
+                    <label class="label-icon" for="search"><i class="material-icons small" id="search-icon">search</i></label>  
+                </div>
+            </form>
+        </div>
+    
+        <!-- mobile sidenav -->
+        <ul class="sidenav" id="mobile-demo">
+            <li><a class="btn extra-bold" >Serendipitous?</a></li>
+            <li><a href="{{ url_for('get_videos')}}">Home</a></li>
+            <li><a href="#">Discover</a></li>
+            <li><a href="#">Sign up</a></li>
+            <li><a href="#">Log in</a></li>
+        </ul>
+    </header>
+
     {% block content %}
 
     {% endblock %}
