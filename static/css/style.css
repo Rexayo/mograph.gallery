@@ -26,27 +26,57 @@ header li {
     font-size: 1.1em;
 }
 
-#logo{
-    font-size: 1.9em;
+#modal-tagline{
+    font-family: 'Manrope', sans-serif;
+    font-size: 2.5em;
+    font-weight: 200;
+    line-height: 1em;
+    margin-top: 40px;
 }
 
-#logo-dot{
+#modal1{
+    width: 20vw;
+    margin-top: 7vw;
+}
+
+.modal-close{
+    font-weight: 900 !important;
+}
+
+#username:focus, #password:focus{
+    border-bottom: 1px solid yellow;
+}
+
+
+
+#logo{
+    font-size: 1.9em;
+    color:white;
+}
+
+#modal-header{
+    font-size: 1.4em;
+    color:black;
+}
+
+.logo-dot{
     color: yellow;
 }
+
 #brainstorm{
     font-size: 5em;
 }
+
 #search{
     border-radius: 3px;
     border-bottom: 1px solid grey;
     width: 250px;
     padding-top: 5px;
     padding-bottom: 5px;
-
 }
+
 #search-bar{
    margin-top: 0;
-
 }
 
 #search:focus {
@@ -79,13 +109,14 @@ header li {
 }
 
 #mobile-demo {
-    background-color: black;
-   
+    background-color: black; 
 }
+
 #mobile-demo a{
     color:white;
     font-size: 1.15em; 
 }
+
 #mobile-demo .btn{
     font-size: 1.15em; 
 }

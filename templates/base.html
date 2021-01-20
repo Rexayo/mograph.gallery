@@ -25,13 +25,13 @@
     <header>
         <!-- navbar -->
         <nav class="black">
-            <div class="nav-wrapper page-margin ">
-                <a href="{{ url_for('get_videos')}}" class="brand-logo extra-bold left" id="logo">mograph<span id="logo-dot">.</span>gallery</a>
+            <div class="nav-wrapper page-margin">
+                <a href="{{ url_for('get_videos')}}" class="brand-logo extra-bold left" id="logo">mograph<span class="logo-dot">.</span>gallery</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a class="btn extra-bold">Serendipitous?</a></li>
                     <li><a href="#">Discover</a></li>
-                    <li><a href="#">Sign up</a></li>
+                    <li><a href="{{ url_for('signup')}}">Sign up</a></li>
                     <li><a href="#">Log in</a></li>
                 </ul>
             </div>
@@ -52,7 +52,7 @@
             <li><a class="btn extra-bold" >Serendipitous?</a></li>
             <li><a href="{{ url_for('get_videos')}}">Home</a></li>
             <li><a href="#">Discover</a></li>
-            <li><a href="#">Sign up</a></li>
+            <li><a href="{{ url_for('signup')}}">Sign up</a></li>
             <li><a href="#">Log in</a></li>
         </ul>
     </header>
