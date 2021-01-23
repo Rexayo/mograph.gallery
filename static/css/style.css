@@ -26,38 +26,12 @@ header li {
     font-size: 1.1em;
 }
 
-#modal-tagline{
-    font-family: 'Manrope', sans-serif;
-    font-size: 2.5em;
-    font-weight: 200;
-    line-height: 1em;
-    margin-top: 40px;
-}
 
-#modal1{
-    width: 20vw;
-    margin-top: 7vw;
-}
-
-.modal-close{
-    font-weight: 900 !important;
-}
-
-#username:focus, #password:focus{
-    border-bottom: 1px solid yellow;
-}
-
-
-
-#logo{
+#logo {
     font-size: 1.9em;
-    color:white;
+    color: white;
 }
 
-#modal-header{
-    font-size: 1.4em;
-    color:black;
-}
 
 .logo-dot{
     color: yellow;
@@ -122,5 +96,68 @@ header li {
 }
 #mobile-demo a:hover{
     background-color: rgb(27, 27, 27);
+}
+
+
+/* sign up modal */
+#modal-tagline{
+    font-family: 'Manrope', sans-serif;
+    font-size: 2.3em;
+    font-weight: 200;
+    line-height: 1.1;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#modal1{
+    width: 20vw;
+    margin-top: 7vw;
+    font-family: 'Manrope', sans-serif;
+    border: 1px solid rgb(134, 134, 134);
+}
+
+.modal-footer{
+    padding: 0;
+    margin: 0;
+}
+
+.modal-close{
+    font-weight: 900 !important;
+}
+
+.username{
+    margin-top: 0;
+}
+
+#username:focus, #password:focus{
+    border-bottom: 1px solid yellow;
+}
+
+:-webkit-autofill,
+:-webkit-autofill:hover,
+:-webkit-autofill:valid,
+:-webkit-autofill:invalid {
+  /*https://css-tricks.com/snippets/css/change-autocomplete-styles-webkit-browsers/*/
+  border: none ;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px rgb(32, 32, 32) inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+  font-size: inherit !important;
+  
+}
+
+#modal-header{
+    font-size: 1.4em;
+    color:black;
+}
+
+
+/* flash messages */
+.flashes h6{
+    line-height: 1;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    margin-top: 40px;
+    margin-bottom: 10px;
 }
 
