@@ -4,6 +4,14 @@
 
 /*--- utilities start here--- */
 
+body a{
+    color: white;
+}
+
+body a:hover{
+    color: #ffeb3b;
+}
+
 .page-margin {
     margin-left: 7vw;
     margin-right: 7vw;
@@ -34,7 +42,7 @@ header li {
 
 
 .logo-dot{
-    color: yellow;
+    color: #ffeb3b;
 }
 
 #brainstorm{
@@ -55,7 +63,7 @@ header li {
 
 #search:focus {
     background-color: black;
-    border-bottom: 1px solid yellow;
+    border-bottom: 1px solid #ffeb3b;
     padding-top: 5px;
     padding-bottom: 5px;
     color: white;
@@ -63,7 +71,7 @@ header li {
 
 #search-icon{
     margin-left: -15px;
-    color:yellow;
+    color:#ffeb3b;
 }
 
 .btn, #mobile-demo .btn{
@@ -78,7 +86,7 @@ header li {
 }
 
 .btn:hover,#mobile-demo .btn:hover {
-    background-color: yellow;
+    background-color: #ffeb3b;
     color: black;
 }
 
@@ -111,14 +119,23 @@ header li {
 
 #modal1{
     width: 20vw;
-    margin-top: 7vw;
+    margin-top: 20vh;
     font-family: 'Manrope', sans-serif;
     border: 1px solid rgb(134, 134, 134);
 }
 
+#login-footer{
+    padding-top: 35px !important;    
+}
+
 .modal-footer{
     padding: 0;
-    margin: 0;
+    
+}
+
+
+.modal-footer a{
+    margin-left: 7px;
 }
 
 .modal-close{
@@ -130,7 +147,7 @@ header li {
 }
 
 #username:focus, #password:focus{
-    border-bottom: 1px solid yellow;
+    border-bottom: 1px solid #ffeb3b;
 }
 
 :-webkit-autofill,
@@ -160,4 +177,9 @@ header li {
     margin-top: 40px;
     margin-bottom: 10px;
 }
-
+.flashes h4{
+    line-height: 1;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 200;
+    margin-top: 0;
+}

@@ -9,7 +9,7 @@
         <div class="row center-align"><a href="{{ url_for('get_videos')}}"
                 class="brand-logo extra-bold center-align white-text" id="modal-header">mograph<span
                     class="logo-dot">.</span>gallery</a></div>
-        <div class="row white-text center-align" id="modal-tagline">Signup to discover and save amazing creativity.</div>
+        <div class="row white-text center-align" id="modal-tagline">Signup to discover and save amazing creativity</div>
         <section>
             <!-- flash messages -->
             {% with messages = get_flashed_messages() %}
@@ -22,34 +22,38 @@
                 {% endif %}
             {% endwith %}
         </section>
+            <div class="signup-info">
+                <!-- username -->
+                <div class="row">
+                    <div class="input-field col s12 username">
+                        <i class="material-icons prefix yellow-text">insert_emoticon</i>
+                        <input id="username" name="username" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" type="text"
+                            class="validate white-text" required>
+                        <label for="username">Username</label>
+                    </div>
+                </div>
+                <!-- password -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix yellow-text">lock_open</i>
+                        <input id="password" name="password" type="password" minlength="5" maxlength="15"
+                            pattern="^[a-zA-Z0-9]{5,15}$" class="validate white-text" required>
+                        <label for="password">Create a password</label>
+                    </div>
+                </div>
+            </div>
+            <!-- sign up -->
+            <div class="row center-align grey darken-4 modal-footer">
+                <button type="submit" class=" waves-effect waves-green btn s12 col extra-bold">Sign up</button>
+                
+                <p class="center-align white-text " id="login-footer">
+                    Have an account?<a class="yellow-text extra-bold" href="{{ url_for('login')}}">Log in now</a>
+                </p>
+                
+            </div>
         
-        <div class="signup-info">
-            <!-- username -->
-            <div class="row">
-                <div class="input-field col s12 username">
-                    <i class="material-icons prefix yellow-text">insert_emoticon</i>
-                    <input id="username" name="username" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" type="text"
-                        class="validate white-text" required>
-                    <label for="username">Username</label>
-                </div>
-            </div>
-            <!-- password -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix yellow-text">lock_open</i>
-                    <input id="password" name="password" type="password" minlength="5" maxlength="15"
-                        pattern="^[a-zA-Z0-9]{5,15}$" class="validate white-text" required>
-                    <label for="password">Create a password</label>
-                </div>
-            </div>
         </div>
-        <!-- Sign up -->
-        <div class="row center-align grey darken-4 modal-footer">
-        <button type="submit" class=" waves-effect waves-green btn s12 col extra-bold">Continue</button>
-        </div>
-   
-    </div>
-   
+        
 </form>
 
 {% endblock %}
