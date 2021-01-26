@@ -1,58 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!-- <section class="white-text  ">
-    <div class="row ">
-        <h2> testing the extension from base</h2>
-        {% for video in videos%}
-        {{video.video_name}}<br>
-        {{video.video_description}}<br>
-        {{video.video_embed_url}}<br>
-        {{video.created_by}}<br>
-        {{video.sound_by}}<br>
-        {% endfor %}
-    </div>
-</section> -->
 <section id="video-gallery">
+    
     <div class="row margin">
+         
         <div class="col s8 offset-s2">
             <!-- https://codepen.io/gaeowyn/pen/oiyHF -->
             <div class=" video-row">
                 <ul>
-                    <li class="video">
-                        <span>New York</span>
-                        <img
-                            src='http://i1276.photobucket.com/albums/y465/gaeowyn/new_york_city_2-wallpaper-960x540_zpsce336d7f.jpg' />
-                    </li>
-
-                    <li class="first-video video">
-                        <span>London</span>
-                        <img
-                            src='http://i1276.photobucket.com/albums/y465/gaeowyn/london_in_black_and_white-wallpaper-960x540_zpsa7fa9d45.jpg' />
-                    </li>
-
-                    <li class="second-video video">
-                        <span>Poznań</span>
-                        <img
-                            src='http://i1276.photobucket.com/albums/y465/gaeowyn/poznan_poland-wallpaper-960x540_zps6a5470ed.jpg' />
-                    </li>
-
-                    <li class="video">
-                        <span>Chicago</span>
-                        <img
-                            src='http://i1276.photobucket.com/albums/y465/gaeowyn/cityscape_skyline_chicago_sculpture-wallpaper-960x540_zps19c2d09d.jpg' />
-                    </li>
-                    <li class="video">
-                        <span>Chicago</span>
-                        <img
-                            src='http://i1276.photobucket.com/albums/y465/gaeowyn/cityscape_skyline_chicago_sculpture-wallpaper-960x540_zps19c2d09d.jpg' />
-                    </li>
-
-                    <li class="last-video">
-                        <span>Golden Gate</span>
-                        <img
-                            src='http://i1276.photobucket.com/albums/y465/gaeowyn/golden_gate_in_fog-wallpaper-960x540_zps1f6fc1af.jpg' />
-                    </li>
+                    {% for video in videos %}
+                        <li class="video">
+                            <div class="grey darken-4 white-text video-label">
+                                <h6>{{ video.video_name }}</h6>
+                                <div class="extra-bold category-name">
+                                    {{ video.category_name }}
+                                </div>
+                                <div class="description-trigger">
+                                    <a href="#" onclick="descriptionToggle()" class="video-controls" id="{{ loop.index  }}">Show video controls</a>
+                                    <a href="#" onclick="descriptionToggle()" class="learn-more-link"><i class="tiny material-icons">info_outline</i></a>
+                                    <p class="video-description white-text" >
+                                        {{ video.video_description }}<br>
+                                        <br>
+                                        Created by: {{ video.created_by }}<br>
+                                        <br>
+                                        Sound by: {{ video.sound_by }}
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <iframe src="{{video.video_embed_url}}?api=1&autoplay=0&transparent=0&controls=0" id="player{{ loop.index  }}"  class="video-frame" type="text/html"
+                                frameborder="0" allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>

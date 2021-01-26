@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_videos")
 def get_videos():
-    videos = mongo.db.videos.find()
+    videos = list(mongo.db.videos.find())
     return render_template("videos.html", videos=videos)
 
 
