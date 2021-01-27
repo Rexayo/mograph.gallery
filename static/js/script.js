@@ -11,25 +11,30 @@ $(document).ready(function () {
         froogaloop.api('play');
         player.mouseout(function () {
         froogaloop.api('pause');
-            
         });
     });
 
+    $('.video').mouseenter(function () {
+        $( this ).find(".video-controls").fadeIn();
+    });
+
+    $('.video').mouseleave(function () {
+        $( this ).find(".video-controls").fadeOut();  
+    });
 
     $('.video-label').mouseleave(function () {
         $(".video-description").slideUp("slow");
         $('.learn-more-link').css('color', '');
-        
     });
-
 
     $(".learn-more-link").on("click", function () {
         $(this).next('.video-description').slideToggle( "slow" );
-         $(this).css('color', '#ffeb3b');
-         $(".video-controls").fadeToggle();
+        $(this).css('color', '#ffeb3b');
+        $(".video-controls").fadeToggle();
     });
 
-    var hideCounter = 0;
+    
+    var hideCounter = 1;
     $(".video-controls").on("click", function () {
         var video = $('#player' + this.id);
         var currSrc = video.attr("src");
@@ -45,8 +50,6 @@ $(document).ready(function () {
         hideCounter++;
         return hideCounter;
     });
-
-
 });
 
 

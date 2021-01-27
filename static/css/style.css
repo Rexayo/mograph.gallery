@@ -186,20 +186,16 @@ header li {
 /* https://codepen.io/gaeowyn/pen/oiyHF */
 
 .video-row *,.video-row *:after,.video-row *:before {
-  padding:0;
-  margin:0;
-  
+  padding: 0;
+  margin: 0;
 }
-
 
 .video-row ul {
   list-style:none;
   width:66.67vw;
-  height:460px;
+  height:458px;
   overflow:hidden;
-  /* box-shadow:1px 1px 3px 1px; */
 }
-
 
 .video-row li {
   position:relative;
@@ -217,28 +213,25 @@ header li {
   border:none;
 }
 
-
-
 .video-row iframe {
   width:640px;
   height: 360px;
+  margin: 0;
+  padding: 0;
 }
 
 .video-row ul:hover li {
   width: 4.167vw;  
 }
 
-
 .video-row ul li:hover {
   width: 30vw;
 }
-
 
 .category-name {
     font-size: 0.8em;
     font-family: 'Manrope', sans-serif;
     padding-bottom: 20px;
-    
 }
 
 .video-label {
@@ -251,43 +244,36 @@ header li {
 
 .video-label h6 {
     font-family: 'Manrope', sans-serif;
-    font-size: 1.3em;
-    
+    font-size: 1.3em; 
 }
 
 .video-frame {
-    cursor: url(static/img/play.png), auto;
-    
+    cursor: url(static/img/play.png), auto; 
 }
 
 .video-description {
     border-top: 1px solid grey;
     padding-top: 10px;
     width:auto;
-  height: 360px;
+    height: 360px;
     display: none;
     text-align: left;
-  text-justify: none;
-    
+    text-justify: none;
 }
-
 
 .more {
     font-size: 0.9rem;
     font-weight: 800;
     font-family: 'Manrope', sans-serif;
-    
 }
-
-
 
 .learn-more-link {
     color: grey;
     padding-bottom: 10px;
-    
 }
 
 .video-controls {
     float: right;
     color: grey;
+    display: none;
 }
