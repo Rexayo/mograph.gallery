@@ -2,7 +2,8 @@ $(document).ready(function () {
     $('.sidenav').sidenav({ edge: "right" });
      $('.modal').modal();
      $('#modal1').modal('open');
-     $('.video-frame').fadeIn("slow");
+     $('.tooltipped').tooltip();
+    
      
     // https://stackoverflow.com/questions/35549780/play-vimeo-videos-on-mouse-hover
     $('.video-frame').mouseover(function () {
