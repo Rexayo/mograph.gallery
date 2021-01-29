@@ -122,6 +122,13 @@ header li {
     border: 1px solid rgb(134, 134, 134);
 }
 
+#add-video-modal{
+    width: 40vw;
+    margin-top: 10vh;
+    font-family: 'Manrope', sans-serif;
+    border: 1px solid rgb(134, 134, 134);
+}
+
 #login-footer{
     padding-top: 35px !important;    
 }
@@ -251,10 +258,6 @@ header li {
     font-size: 1.3em; 
 }
 
-.video-frame {
-    cursor: url(static/img/play.png), auto; 
-}
-
 .video-description {
     border-top: 1px solid grey;
     padding-top: 10px;
@@ -303,7 +306,7 @@ header li {
     font-weight: 800;
     color: white;
     line-height: 1em;
-    letter-spacing: -4px;
+    letter-spacing: -2px;
 }
 
 .page-description {

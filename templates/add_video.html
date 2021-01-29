@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content%}
+
+<!-- Modal Structure -->
+    <form id="add-video-modal" class="modal s12 m2 offset-m5" method="POST" action="{{ url_for('login')}}">
+        
+        <div class="modal-content grey darken-4">
+            <div class="row white-text center-align extra-bold" id="modal-tagline">Add a Video</div>
+            <section>
+                <!-- flash messages -->
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages%}
+                            <div class="row flashes">
+                                <h6 class="center-align yellow-text">{{ message }}</h6>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </section>
+            <div class="video-info">
+                <!-- video-name -->
+                <div class="row">
+                    <div class="input-field col s12 username">
+                        <i class="material-icons prefix yellow-text">insert_emoticon</i>
+                        <input id="video-name" name="video-name" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,15}$" type="text"
+                            class="validate white-text" required>
+                        <label for="video-name">Name</label>
+                    </div>
+                </div>
+                <!-- video-description -->
+                <div class="row">
+                    <div class="input-field col s12 username">
+                        <i class="material-icons prefix yellow-text">insert_emoticon</i>
+                        <input id="video-description" name="video-description" minlength="5" maxlength="300" pattern="^[a-zA-Z0-9]{5,15}$" type="text"
+                            class="validate white-text" required>
+                        <label for="video-description">Synopsis</label>
+                    </div>
+                </div>
+                <!-- video-embed-url -->
+                <div class="row">
+                    <div class="input-field col s12 username">
+                        <i class="material-icons prefix yellow-text">insert_emoticon</i>
+                        <input id="video-embed-url" name="video-embed-url" minlength="5" maxlength="60" pattern="^[a-zA-Z0-9]{5,15}$" type="url"
+                            class="validate white-text" required>
+                        <label for="video-embed-url">Paste embed url</label>
+                    </div>
+                </div>
+                <!-- video-created-by -->
+                <div class="row">
+                    <div class="input-field col s12 username">
+                        <i class="material-icons prefix yellow-text">insert_emoticon</i>
+                        <input id="video-created-by" name="video-created-by" minlength="5" maxlength="30" pattern="^[a-zA-Z0-9]{5,15}$" type="text"
+                            class="validate white-text" required>
+                        <label for="video-created-by">Video created by</label>
+                    </div>
+                </div>
+                <!-- video-sound-by -->
+                <div class="row">
+                    <div class="input-field col s12 username">
+                        <i class="material-icons prefix yellow-text">insert_emoticon</i>
+                        <input id="video-sound-by" name="video-sound-by" minlength="5" maxlength="30" pattern="^[a-zA-Z0-9]{5,15}$" type="text"
+                            class="validate white-text" required>
+                        <label for="video-sound-by">Sound created by</label>
+                    </div>
+                </div>
+                <!-- video-category-selection -->
+                <div class="input-field col s12">
+                    <select>
+                        <option value="" disabled selected>Select category</option>
+                        <option value="1">Geometric</option>
+                        <option value="2">Showreel</option>
+                        <option value="3">Rebrand</option>
+                        <option value="3">Visual Effects</option>
+                    </select>
+                    <label>Materialize Select</label>
+                </div>
+            </div>
+            <!-- log in -->
+            <div class="row center-align grey darken-4 modal-footer">
+                <button type="submit" class=" waves-effect waves-green btn s12 col extra-bold">Continue</button>
+                <button type="submit" class=" waves-effect waves-green btn s12 col extra-bold">Cancel</button>
+            
+                
+            
+            </div>
+            
+        </div>
+            
+    </form>
+
+{% endblock %}

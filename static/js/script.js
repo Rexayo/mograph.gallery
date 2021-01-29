@@ -2,6 +2,7 @@ $(document).ready(function () {
     $('.sidenav').sidenav({ edge: "right" });
      $('.modal').modal();
      $('#modal1').modal('open');
+     $('#add-video-modal').modal('open');
      $('.tooltipped').tooltip();
     
      
