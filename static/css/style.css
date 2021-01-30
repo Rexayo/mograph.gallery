@@ -323,10 +323,6 @@ header li {
     font-family: 'Manrope', sans-serif;
 }
 
-/* .add-video-modal-footer .btn{
-    width: 100px !important;
-    margin-left: 20px !important;
-} */
 
 /* https://stackoverflow.com/questions/38996019/how-to-change-the-text-color-in-a-materializecss-select-dropdown */
 ul.dropdown-content.select-dropdown li span {
@@ -362,6 +358,10 @@ ul.dropdown-content.select-dropdown li span:hover {
     font-weight: 400 ;
 }
 
+#category_name.validate{
+    top: 26px;
+    left:5px;
+}
 
 /*----------------------------------------------Custom Scrollbar starts here - https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp----------------------------------------*/
 /* width */
