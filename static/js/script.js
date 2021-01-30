@@ -1,9 +1,12 @@
 $(document).ready(function () {
     $('.sidenav').sidenav({ edge: "right" });
      $('.modal').modal();
+     $('.tooltipped').tooltip();
      $('#modal1').modal('open');
      $('#add-video-modal').modal('open');
-     $('.tooltipped').tooltip();
+     $('select').formSelect();
+     
+     
     
      
     // https://stackoverflow.com/questions/35549780/play-vimeo-videos-on-mouse-hover
@@ -25,12 +28,12 @@ $(document).ready(function () {
     });
 
     $('.video-label').mouseleave(function () {
-        $(".video-description").slideUp("slow");
+        $(".learn-more").slideUp("slow");
         $('.learn-more-link').css('color', '');
     });
 
     $(".learn-more-link").on("click", function () {
-        $(this).next('.video-description').slideToggle( "slow" );
+        $(this).next('.learn-more').slideToggle( "slow" );
         $(this).css('color', '#ffeb3b');
         $(".video-controls").fadeToggle();
     });

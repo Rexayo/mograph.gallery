@@ -19,10 +19,22 @@
                 {% endwith %}
             </section>
             <div class="video-info">
+                <!-- video-category-selection -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select id="category-selection" name="category-selection" class="validate   ">
+                            <option value="" disabled selected >Click to choose </option>
+                            {% for category in categories %}
+                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="category-selection">Select Category</label>
+                    </div>
+                </div>
                 <!-- video-name -->
                 <div class="row">
-                    <div class="input-field col s12 username">
-                        <i class="material-icons prefix yellow-text">insert_emoticon</i>
+                    <div class="input-field col s12 video-name">
+                        <i class="material-icons prefix yellow-text">border_color</i>
                         <input id="video-name" name="video-name" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,15}$" type="text"
                             class="validate white-text" required>
                         <label for="video-name">Name</label>
@@ -30,17 +42,17 @@
                 </div>
                 <!-- video-description -->
                 <div class="row">
-                    <div class="input-field col s12 username">
-                        <i class="material-icons prefix yellow-text">insert_emoticon</i>
-                        <input id="video-description" name="video-description" minlength="5" maxlength="300" pattern="^[a-zA-Z0-9]{5,15}$" type="text"
-                            class="validate white-text" required>
-                        <label for="video-description">Synopsis</label>
+                    <div class="input-field col s12 video-description">
+                        <i class="material-icons prefix yellow-text">comment</i>
+                        <textarea id="video-description" name="video-description" minlength="5" maxlength="300" pattern="^[a-zA-Z0-9]{5,15}$"
+                            class="validate white-text materialize-textarea" required></textarea>
+                        <label for="video-description">Description</label>
                     </div>
                 </div>
                 <!-- video-embed-url -->
                 <div class="row">
-                    <div class="input-field col s12 username">
-                        <i class="material-icons prefix yellow-text">insert_emoticon</i>
+                    <div class="input-field col s12 video-embed-url">
+                        <i class="material-icons prefix yellow-text">language</i>
                         <input id="video-embed-url" name="video-embed-url" minlength="5" maxlength="60" pattern="^[a-zA-Z0-9]{5,15}$" type="url"
                             class="validate white-text" required>
                         <label for="video-embed-url">Paste embed url</label>
@@ -48,8 +60,8 @@
                 </div>
                 <!-- video-created-by -->
                 <div class="row">
-                    <div class="input-field col s12 username">
-                        <i class="material-icons prefix yellow-text">insert_emoticon</i>
+                    <div class="input-field col s12 video-created-by">
+                        <i class="material-icons prefix yellow-text">movie_creation</i>
                         <input id="video-created-by" name="video-created-by" minlength="5" maxlength="30" pattern="^[a-zA-Z0-9]{5,15}$" type="text"
                             class="validate white-text" required>
                         <label for="video-created-by">Video created by</label>
@@ -57,32 +69,19 @@
                 </div>
                 <!-- video-sound-by -->
                 <div class="row">
-                    <div class="input-field col s12 username">
-                        <i class="material-icons prefix yellow-text">insert_emoticon</i>
+                    <div class="input-field col s12 video-sound-by">
+                        <i class="material-icons prefix yellow-text">audiotrack</i>
                         <input id="video-sound-by" name="video-sound-by" minlength="5" maxlength="30" pattern="^[a-zA-Z0-9]{5,15}$" type="text"
                             class="validate white-text" required>
                         <label for="video-sound-by">Sound created by</label>
                     </div>
                 </div>
-                <!-- video-category-selection -->
-                <div class="input-field col s12">
-                    <select>
-                        <option value="" disabled selected>Select category</option>
-                        <option value="1">Geometric</option>
-                        <option value="2">Showreel</option>
-                        <option value="3">Rebrand</option>
-                        <option value="3">Visual Effects</option>
-                    </select>
-                    <label>Materialize Select</label>
-                </div>
+                
             </div>
             <!-- log in -->
-            <div class="row center-align grey darken-4 modal-footer">
-                <button type="submit" class=" waves-effect waves-green btn s12 col extra-bold">Continue</button>
-                <button type="submit" class=" waves-effect waves-green btn s12 col extra-bold">Cancel</button>
-            
-                
-            
+            <div class="row center-align grey darken-4 add-video-modal-footer modal-footer">
+                <a href="#" class=" waves-effect waves-green btn s4 offset-s1 right col extra-bold">Continue</a>
+                <a href="#" class=" waves-effect waves-green btn s4 offset-s1 right col extra-bold">Cancel</a>
             </div>
             
         </div>
