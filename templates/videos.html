@@ -37,8 +37,13 @@
                                             <br>
                                             Created by: {{ videos[ind].created_by }}<br>
                                             <br>
-                                            Sound by: {{ videos[ind].sound_by }}
+                                            Sound by: {{ videos[ind].sound_by }}<br>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <em class="learn-more-link">Added by: {{ videos[ind].added_by }}</em>
                                         </p>
+                                        
                                     </div>
                                 </div>
                                 <iframe src="{{videos[ind].video_embed_url}}?api=1&autoplay=0&transparent=0&controls=0"
