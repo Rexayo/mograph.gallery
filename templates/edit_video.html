@@ -25,9 +25,13 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <select id="category_name" name="category_name" class="validate" required>
-                            <option value="" disabled selected >Click to choose </option>
+                            <option value="" disabled >Click to choose</option>
                             {% for category in categories %}
+                            {% if category.category_name == video.category_name%}
+                            <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+                            {% else %}
                             <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                            {% endif %}
                             {% endfor %}
                         </select>
                         <label for="category_name">Select Category</label>
@@ -38,7 +42,7 @@
                     <div class="input-field col s12">
                         <i class="material-icons prefix yellow-text">border_color</i>
                         <input id="video_name" name="video_name" minlength="5" maxlength="20"  type="text"
-                            class="validate white-text" required>
+                            value="{{- video.video_name -}}" class="validate white-text" required>
                         <label for="video_name">Name</label>
                     </div>
                 </div>
@@ -47,7 +51,7 @@
                     <div class="input-field col s12 ">
                         <i class="material-icons prefix yellow-text">comment</i>
                         <textarea id="video_description" name="video_description" minlength="5" maxlength="300" 
-                            class="validate white-text materialize-textarea" required></textarea>
+                         class="validate white-text materialize-textarea" required>{{- video.video_description -}}</textarea>
                         <label for="video_description">Description</label>
                     </div>
                 </div>
@@ -55,9 +59,9 @@
                 <div class="row">
                     <div class="input-field col s12 ">
                         <i class="material-icons prefix yellow-text">language</i>
-                        <input id="video-embed-url" name="video_embed_url" minlength="5" maxlength="60" type="url"
-                            class="validate white-text" required>
-                        <label for="video-embed-url">Paste embed url</label>
+                        <input id="video_embed_url" name="video_embed_url" minlength="5" maxlength="60" type="url"
+                           value="{{- video.video_embed_url -}}" class="validate white-text" required>
+                        <label for="video_embed_url">Paste embed url</label>
                     </div>
                 </div>
                 <!-- video-created-by -->
@@ -65,7 +69,7 @@
                     <div class="input-field col s12 ">
                         <i class="material-icons prefix yellow-text">movie_creation</i>
                         <input id="created_by" name="created_by" minlength="5" maxlength="30" type="text"
-                            class="validate white-text" required>
+                            value="{{- video.created_by -}}" class="validate white-text" required>
                         <label for="created_by">Created by</label>
                     </div>
                 </div>
@@ -74,16 +78,16 @@
                     <div class="input-field col s12 ">
                         <i class="material-icons prefix yellow-text">audiotrack</i>
                         <input id="sound_by" name="sound_by" minlength="5" maxlength="30" type="text"
-                            class="validate white-text" required>
+                           value="{{- video.sound_by -}}" class="validate white-text" required>
                         <label for="sound_by">Sound by</label>
                     </div>
                 </div>
                 
             </div>
             <!-- log in -->
-            <div class="row center-align grey darken-4 add-video-modal-footer modal-footer">
-                <button type="submit" href="{{ url_for('edit_video', video_id=video._id)}}" id="add-video-modal-footer" class=" waves-effect waves-green btn s12 offset-s1 col extra-bold">Edit</button>
-                <!-- <a href="#" class=" waves-effect waves-green btn s4 offset-s1 right col extra-bold">Cancel</a> -->
+            <div class="row center-align grey darken-4 add-video-modal-footerr">
+                <button type="submit"  id="add-video-modal-footer" class=" waves-effect waves-green btn s3 offset-s2 col extra-bold">Save changes</button>
+                <a href="{{ url_for('profile', username=session['user'])}}" class=" waves-effect waves-green btn s3 offset-s2 col extra-bold">Cancel</a>
             </div>
             
         </div>
