@@ -33,10 +33,8 @@ $(document).ready(function () {
             }
         });
     }
+    
     $('#category_name').css('display', 'none');
-
-
-
     $("#add-video-modal-footer").on("click", function () {
         $('#category_name').css('display', 'block');
 
@@ -45,10 +43,6 @@ $(document).ready(function () {
         });
 
     });
-
-
-
-
 
     // https://stackoverflow.com/questions/35549780/play-vimeo-videos-on-mouse-hover
     $('.video-frame').mouseover(function () {

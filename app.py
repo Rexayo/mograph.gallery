@@ -83,8 +83,17 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
+    videos = list(mongo.db.videos.find())
+
+    # create a new list of videos unique to user
+    my_videos = []
+    for video in videos:
+        if video["added_by"] == username:
+            my_videos.append(video)
+
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("profile.html",
+                               username=username, my_videos=my_videos)
 
     return redirect(url_for("login"))
 
