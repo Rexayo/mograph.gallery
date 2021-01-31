@@ -128,6 +128,34 @@ def add_video():
 
 @app.route("/edit_video/<video_id>", methods=["GET", "POST"])
 def edit_video(video_id):
+    if request.method == "POST":
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "video_name": request.form.get("video_name"),
+            "video_description": request.form.get("video_description"),
+            "video_embed_url": request.form.get("video_embed_url"),
+            "created_by": request.form.get("created_by"),
+            "sound_by": request.form.get("sound_by"),
+            "added_by": session["user"]
+        }
+        mongo.db.videos.update({"_id": ObjectId(video_id)}, submit)
+        flash("Video Successfully Updated")
+        # grab the session user's username from db
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+
+        videos = list(mongo.db.videos.find())
+
+        # create a new list of videos unique to user
+        my_videos = []
+        for video in videos:
+            if video["added_by"] == username:
+                my_videos.append(video)
+
+        if session["user"]:
+            return render_template("profile.html",
+                                   username=username, my_videos=my_videos)
+
     video = mongo.db.videos.find_one({"_id": ObjectId(video_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_video.html",
