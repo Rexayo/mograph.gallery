@@ -19,11 +19,32 @@
             {{ username }}
         </div>
         <div class="page-description">
-            
-            {{ my_videos | length }} videos
+            {% if my_videos | length == 1 %}
+                {{ my_videos | length }} video
+            {% else %}
+                {{ my_videos | length }} videos
+            {% endif %}
         </div>
     </div>
     </div>
+</section>
+<section>
+  <!-- Delete Modal -->
+  {% for video in my_videos %}
+    {% if session.user|lower == video.added_by|lower %}
+    <div id="delete-modal" class="modal grey darken-4 white-text center-align">
+        <div class="modal-content row">
+        <div class="col s12"><i class="material-icons yellow-text">warning</i></div>
+        <h5 class="extra-bold yellow-text"> This action cannot be undone</h5>
+        <p>Are you sure you want to delete this video?</p>
+        </div>
+        <div class="grey darken-4 row center-align">
+        <a href="{{ url_for('delete_video', video_id=video._id)}}" class="modal-close waves-effect waves-green btn col extra-bold s3 offset-s2">Delete</a>
+        <a href="{{ url_for('profile', username=session['user'])}}" class="modal-close waves-effect waves-green btn col extra-bold s3 offset-s2">Cancel</a>
+        </div>
+    </div>
+    {% endif %}
+  {% endfor %}
 </section>
 <section id="video-gallery">
     {%- for num in range(0, my_videos | length, 6) -%}
@@ -43,6 +64,9 @@
                                     </div>
                                     <div class="description-trigger">
                                         <a href="{{ url_for('edit_video', video_id=my_videos[ind]._id)}}" class="grey edit grey darken-2">Edit</a>
+                                        <!-- Delete Modal Trigger -->
+                                        <a href="#delete-modal" class="grey edit grey darken-2 modal-trigger">Delete</a>
+
                                         <a href="#" class="video-controls" id="{{ loop.index + num }}">Show video
                                             controls</a>
                                         <a href="#" class="learn-more-link tooltipped"  data-position="right" data-tooltip="Click to learn more"><i class="tiny material-icons">info_outline</i></a>

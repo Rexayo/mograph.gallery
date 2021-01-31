@@ -115,7 +115,7 @@ header li {
     margin-bottom: 40px;
 }
 
-#modal1{
+#modal1, #delete-modal{
     width: 500px;
     margin-top: 100px;
     font-family: 'Manrope', sans-serif;
@@ -126,8 +126,12 @@ header li {
     padding-top: 35px !important;    
 }
 
-.modal-footer{
+/* .modal-footer{
     padding: 0;   
+} */
+
+.delete-modal-footer {
+    padding-top: 0 !important;
 }
 
 

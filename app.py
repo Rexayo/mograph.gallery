@@ -162,6 +162,27 @@ def edit_video(video_id):
                            video=video, categories=categories)
 
 
+@app.route("/delete_video/<video_id>")
+def delete_video(video_id):
+    mongo.db.videos.remove({"_id": ObjectId(video_id)})
+    flash("Video Successfully Deleted")
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    videos = list(mongo.db.videos.find())
+
+    # create a new list of videos unique to user
+    my_videos = []
+    for video in videos:
+        if video["added_by"] == username:
+            my_videos.append(video)
+
+    if session["user"]:
+        return render_template("profile.html",
+                               username=username, my_videos=my_videos)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
