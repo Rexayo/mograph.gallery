@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content%}
+
+<!-- Modal Structure -->
+    <form id="add-video-modal" class="modal s12 m2 offset-m5" method="POST" action="{{ url_for('edit_video', video_id=video._id)}}">
+        <div class="modal-content grey darken-4">
+            <div class="row center-align"><a href="{{ url_for('get_videos')}}"
+                    class="brand-logo extra-bold center-align white-text" id="modal-header">mograph<span
+                        class="logo-dot">.</span>gallery</a></div>
+            <div class="row white-text center-align extra-bold" id="modal-tagline">Edit Video</div>
+            <section>
+                <!-- flash messages -->
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages%}
+                            <div class="row flashes">
+                                <h6 class="center-align yellow-text">{{ message }}</h6>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </section>
+            <div class="video-info">
+                <!-- video-category-selection -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select id="category_name" name="category_name" class="validate" required>
+                            <option value="" disabled selected >Click to choose </option>
+                            {% for category in categories %}
+                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="category_name">Select Category</label>
+                    </div>
+                </div>
+                <!-- video-name -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix yellow-text">border_color</i>
+                        <input id="video_name" name="video_name" minlength="5" maxlength="20"  type="text"
+                            class="validate white-text" required>
+                        <label for="video_name">Name</label>
+                    </div>
+                </div>
+                <!-- video-description -->
+                <div class="row">
+                    <div class="input-field col s12 ">
+                        <i class="material-icons prefix yellow-text">comment</i>
+                        <textarea id="video_description" name="video_description" minlength="5" maxlength="300" 
+                            class="validate white-text materialize-textarea" required></textarea>
+                        <label for="video_description">Description</label>
+                    </div>
+                </div>
+                <!-- video-embed-url -->
+                <div class="row">
+                    <div class="input-field col s12 ">
+                        <i class="material-icons prefix yellow-text">language</i>
+                        <input id="video-embed-url" name="video_embed_url" minlength="5" maxlength="60" type="url"
+                            class="validate white-text" required>
+                        <label for="video-embed-url">Paste embed url</label>
+                    </div>
+                </div>
+                <!-- video-created-by -->
+                <div class="row">
+                    <div class="input-field col s12 ">
+                        <i class="material-icons prefix yellow-text">movie_creation</i>
+                        <input id="created_by" name="created_by" minlength="5" maxlength="30" type="text"
+                            class="validate white-text" required>
+                        <label for="created_by">Created by</label>
+                    </div>
+                </div>
+                <!-- video-sound-by -->
+                <div class="row">
+                    <div class="input-field col s12 ">
+                        <i class="material-icons prefix yellow-text">audiotrack</i>
+                        <input id="sound_by" name="sound_by" minlength="5" maxlength="30" type="text"
+                            class="validate white-text" required>
+                        <label for="sound_by">Sound by</label>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- log in -->
+            <div class="row center-align grey darken-4 add-video-modal-footer modal-footer">
+                <button type="submit" href="{{ url_for('edit_video', video_id=video._id)}}" id="add-video-modal-footer" class=" waves-effect waves-green btn s12 offset-s1 col extra-bold">Edit</button>
+                <!-- <a href="#" class=" waves-effect waves-green btn s4 offset-s1 right col extra-bold">Cancel</a> -->
+            </div>
+            
+        </div>
+            
+    </form>
+
+{% endblock %}

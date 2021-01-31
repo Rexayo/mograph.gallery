@@ -42,7 +42,7 @@
                                         {{ my_videos[ind].category_name }}
                                     </div>
                                     <div class="description-trigger">
-                                        <a href="" class="grey edit grey darken-2">Edit</a>
+                                        <a href="{{ url_for('edit_video', video_id=my_videos[ind]._id)}}" class="grey edit grey darken-2">Edit</a>
                                         <a href="" class="grey edit grey darken-2">Done</a>
                                         <a href="#" class="video-controls" id="{{ loop.index + num }}">Show video
                                             controls</a>
