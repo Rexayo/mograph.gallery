@@ -191,7 +191,24 @@ def delete_video(video_id):
 def get_categories():
     videos = list(mongo.db.videos.find())
     categories = list(mongo.db.categories.find().sort("category_name", 1))
-    return render_template("categories.html", categories=categories, videos=videos)
+    return render_template("categories.html",
+                           categories=categories, videos=videos)
+
+
+@app.route("/add_category", methods=["GET", "POST"])
+def add_category():
+    videos = list(mongo.db.videos.find())
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
+    if request.method == "POST":
+        category = {
+            "category_name": request.form.get("c_name")
+        }
+        mongo.db.categories.insert_one(category)
+        flash("New Category Added")
+        return redirect(url_for("get_categories"))
+
+    return render_template("add_category.html",
+                           categories=categories, videos=videos)
 
 
 if __name__ == "__main__":

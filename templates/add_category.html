@@ -1,5 +1,46 @@
 {% extends "base.html" %}
 {% block content%}
+<section>
+                <!-- flash messages -->
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages%}
+                            <div class="row flashes">
+                                <h6 class="center-align yellow-text">{{ message }}</h6>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </section>
+<!-- Modal Structure -->
+    <form id="add-category-modal" class="modal s12 m2 offset-m5" method="POST" action="{{ url_for('add_category')}}">
+        <div class="modal-content grey darken-4">
+            <div class="row center-align"><a href="{{ url_for('get_videos')}}"
+                    class="brand-logo extra-bold center-align white-text" id="modal-header">mograph<span
+                        class="logo-dot">.</span>gallery</a></div>
+            <div class="row white-text center-align" id="modal-tagline">Add a Category</div>
+            
+            <!-- category-name -->
+              
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix yellow-text">border_color</i>
+                        <input id="c_name" name="c_name" minlength="3" maxlength="25"  type="text"
+                            class="validate white-text" required>
+                        <label for="c_name">Category Name</label>
+                    </div>
+                </div>
+             
+                
+            
+            <!-- add category -->
+            <div class="row center-align grey darken-4 add-category-modal-footer modal-footer">
+                <button type="submit" id="add-category-modal-footer" class=" waves-effect waves-green btn s12 offset-s1 col extra-bold">Continue</button>
+            </div>
+            
+        </div>
+            
+    </form>
     <section>
         <div class="row margin">
             <div class="col s8 offset-s2">

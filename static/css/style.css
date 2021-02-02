@@ -127,7 +127,7 @@ header li {
 }
 
 
-.delete-modal-footer {
+.delete-modal-footer, .add-category-modal-footer {
     padding-top: 0 !important;
 }
 
@@ -318,9 +318,9 @@ header li {
     padding-top: 10px;;
 }
 
-/* add-video */
+/* add-video and add catergory modals */
 
-#add-video-modal{
+#add-video-modal, #add-category-modal{
     width: 500px;
     margin-top: 100px;
     font-family: 'Manrope', sans-serif;
