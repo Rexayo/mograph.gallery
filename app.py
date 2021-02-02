@@ -24,6 +24,13 @@ def get_videos():
     return render_template("videos.html", videos=videos)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    search = request.form.get("search")
+    videos = list(mongo.db.videos.find({"$text": {"$search": search}}))
+    return render_template("videos.html", videos=videos)
+
+
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     videos = list(mongo.db.videos.find())
@@ -112,11 +119,13 @@ def logout():
 def add_video():
     videos = list(mongo.db.videos.find())
     if request.method == "POST":
+        embed_url = request.form.get("video_embed_url"
+                                     ).split("\"")[1].split("\"")[0]
         video = {
             "category_name": request.form.get("category_name"),
             "video_name": request.form.get("video_name"),
             "video_description": request.form.get("video_description"),
-            "video_embed_url": request.form.get("video_embed_url"),
+            "video_embed_url": embed_url,
             "created_by": request.form.get("created_by"),
             "sound_by": request.form.get("sound_by"),
             "added_by": session["user"]
@@ -195,11 +204,19 @@ def get_categories():
                            categories=categories, videos=videos)
 
 
+
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
     videos = list(mongo.db.videos.find())
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     if request.method == "POST":
+        for category in categories:
+            # check if category already exists in db
+            current_name = category["category_name"].lower()
+            if current_name == request.form.get("c_name").lower():
+                flash("Category already exists")
+                return redirect(url_for("add_category"))
+
         category = {
             "category_name": request.form.get("c_name")
         }
@@ -216,6 +233,14 @@ def edit_category(category_id):
     videos = list(mongo.db.videos.find())
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     if request.method == "POST":
+        for category in categories:
+            # check if category already exists in db
+            current_name = category["category_name"].lower()
+            if current_name == request.form.get("c_name").lower():
+                flash("Category already exists")
+                return redirect(url_for('edit_category',
+                                category_id=category["_id"]))
+
         submit = {
             "category_name": request.form.get("c_name")
         }

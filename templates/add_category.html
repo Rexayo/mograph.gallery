@@ -20,8 +20,20 @@
                         class="logo-dot">.</span>gallery</a></div>
             <div class="row white-text center-align" id="modal-tagline">Add a Category</div>
             
+            <section>
+                <!-- flash messages -->
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages%}
+                            <div class="row flashes">
+                                <h6 class="center-align yellow-text">{{ message }}</h6>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </section>
+            
             <!-- category-name -->
-              
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix yellow-text">border_color</i>

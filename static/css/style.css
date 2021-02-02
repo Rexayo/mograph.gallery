@@ -22,7 +22,6 @@ body a:hover{
 }
 
 /* nav-bar */
-
 header {
     font-family: 'Manrope', sans-serif;
 }
@@ -38,7 +37,6 @@ header li {
     color: white;
 }
 
-
 .logo-dot{
     color: #ffeb3b;
 }
@@ -48,28 +46,27 @@ header li {
 }
 
 #search{
-    border-radius: 3px;
+    border-radius: 0;
     border-bottom: 1px solid grey;
     width: 250px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 0px 10px;
+    height: 40px !important;
+    caret-color: white !important;
 }
 
 #search-bar{
    margin-top: 0;
 }
 
-#search:focus {
-    background-color: black;
-    border-bottom: 1px solid #ffeb3b;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    color: white;
+#search-icon {
+    position: relative;
+    top: 10px;
 }
 
-#search-icon {
-    margin-left: -15px;
-    color:#ffeb3b;
+#search:focus {
+    background-color: black !important;
+    border-bottom: 1px solid #ffeb3b;
+    color: white;
 }
 
 .btn, #mobile-demo .btn {
@@ -116,6 +113,13 @@ header li {
 }
 
 #modal1, #delete-modal, #add-video-modal, #add-category-modal, #edit-category-modal{
+    width: 500px;
+    margin-top: 100px;
+    font-family: 'Manrope', sans-serif !important;
+    border: 1px solid rgb(134, 134, 134);
+}
+
+.delete-modal {
     width: 500px;
     margin-top: 100px;
     font-family: 'Manrope', sans-serif !important;
@@ -402,13 +406,15 @@ ul.dropdown-content.select-dropdown li span:hover {
 .card-reveal {
     height: 135px;
     width: auto;
-    overflow: hidden !important;
-    
+    overflow: hidden !important; 
 }
 
 .card {  
     overflow: hidden;
     height: auto;
+}
+.card:hover {  
+    background-color: rgb(20, 20, 20) !important;
 }
 
 #category-videos li {
@@ -421,8 +427,7 @@ ul.dropdown-content.select-dropdown li span:hover {
   -moz-transition:all 0.7s;
   transition:all 0.7s;
   box-shadow:-2px 0 10px 2px;
-  filter: brightness(100%);
-  
+  filter: brightness(100%); 
 }
 
 #category-videos .video-label {
