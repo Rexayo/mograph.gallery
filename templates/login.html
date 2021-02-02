@@ -55,5 +55,65 @@
         </div>
             
     </form>
+    <section>
+    <div class="row margin">
+    <div class="col s8 offset-s2">
+        <div class="page-header">
+            Discover
+        </div>
+        <div class="page-description">
+            Keyframe magic from around the world
+        </div>
+    </div>
+    </div>
+</section>
+<section id="video-gallery">
+    {%- for num in range(0, videos | length, 6) -%}
+        <div class="row margin">
+            
+            <div class="col s8 offset-s2">
+                <!-- https://codepen.io/gaeowyn/pen/oiyHF -->
+                <div class=" video-row">
+                    <ul>
+                        {% for ind in range(videos | length) %}
+                            {% if loop.index > num and ind < (num + 6) %}
+                            <li class="video">
+                                <div class="grey darken-4 white-text video-label">
+                                    <h6>{{ videos[ind].video_name }}</h6>
+                                    <div class="extra-bold category-name">
+                                        {{ videos[ind].category_name }}
+                                    </div>
+                                    <div class="description-trigger">
+                                        <a href="#" class="video-controls" id="{{ loop.index + num }}">Show video
+                                            controls</a>
+                                        <a href="#" class="learn-more-link tooltipped"  data-position="right" data-tooltip="Click to learn more"><i class="tiny material-icons">info_outline</i></a>
+                                        <p class="learn-more white-text">
+                                            {{ videos[ind].video_description }}<br>
+                                            <br>
+                                            Created by: {{ videos[ind].created_by }}<br>
+                                            <br>
+                                            Sound by: {{ videos[ind].sound_by }}<br>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <em class="learn-more-link">Added by: {{ videos[ind].added_by }}</em>
+                                        </p>
+                                        
+                                    </div>
+                                </div>
+                                <iframe src="{{videos[ind].video_embed_url}}?api=1&autoplay=0&transparent=0&controls=0"
+                                    id="player{{ loop.index + num}}" class="video-frame" type="text/html" frameborder="0"
+                                    allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen
+                                    allowfullscreen></iframe>
+                            </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    {%- endfor -%}
+</section>
 
 {% endblock %}

@@ -13,12 +13,12 @@ body a:hover{
 }
 
 .margin {
-    margin-top: 50px;
+    margin-top: 80px;
 }
 
 .extra-bold {
     font-family: 'Manrope', sans-serif;
-    font-weight: 800;
+    font-weight: 800 !important;
 }
 
 /* nav-bar */
@@ -126,9 +126,6 @@ header li {
     padding-top: 35px !important;    
 }
 
-/* .modal-footer{
-    padding: 0;   
-} */
 
 .delete-modal-footer {
     padding-top: 0 !important;
@@ -213,6 +210,7 @@ header li {
   box-shadow:-2px 0 10px 2px;
   filter: brightness(50%);
 }
+
 
 .video-row ul li:first-child {
   border:none;
@@ -317,6 +315,7 @@ header li {
     font-size: 1.4em;
     font-weight: 400;
     color: grey;
+    padding-top: 10px;;
 }
 
 /* add-video */
@@ -392,6 +391,125 @@ ul.dropdown-content.select-dropdown li span:hover {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.521);
+  background: white;
 }
 /*----------------------------------------------Custom Scrollbar ends here - https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp----------------------------------------*/
+#category-videos {
+    padding: 0;
+    margin: 0;
+    height: 135px;
+    overflow: hidden;
+    
+}
+
+.card-reveal {
+    height: 135px;
+    width: auto;
+    overflow: hidden !important;
+    
+}
+
+.card {  
+    overflow: hidden;
+    height: auto;
+}
+
+#category-videos li {
+  position:relative;
+  width:8.3vw;
+  height: 135px;
+  float:left;
+  border-left:1px solid white;
+  -webkit-transition:all 0.7s;
+  -moz-transition:all 0.7s;
+  transition:all 0.7s;
+  box-shadow:-2px 0 10px 2px;
+  filter: brightness(100%);
+  
+}
+
+#category-videos .video-label {
+    width:240px;
+}
+
+#category-videos iframe {
+    width:240px;
+  height: 135px;
+  margin: 0;
+  padding: 0;
+
+}
+#category-videos ul:hover li {
+  width: 4.167vw;
+  height: 180px; 
+ 
+}
+
+#category-videos ul li:hover {
+  width:240px;
+  height: 180px;
+  
+}
+
+#category-videos .video-row, #category-videos .video {
+    overflow: hidden;
+    height: 180px;
+}
+
+.card-title {
+    font-size: 1.2em !important;
+    font-weight: 800 !important;
+}
+
+.card-content .card-title {
+    padding-left: 8px !important;
+    margin-top: 0px !important;
+}
+.card-content i {
+    padding-bottom: 0px !important;
+}
+
+.open-category {
+    position: absolute;
+    top: 12px;
+    left: 11px;
+    font-weight: 400;
+    font-size: 1.1em;
+    color: grey !important;
+}
+.open-category .arrow {
+    position: relative;
+    top: 5px;
+    left: 5px;
+    font-weight: 400;
+    font-size: 1.1em;
+}
+
+.open-category a {
+   font-family: 'Manrope', sans-serif !important;
+}
+
+#category-videos .open-category {
+    color: grey;
+}
+
+.add-category {
+    font-size: 2em;
+}
+
+.add-category a {
+    font-family: 'Manrope', sans-serif !important;
+    font-weight: 700;
+    color: grey;
+}
+
+
+
+.add-category  .new-folder {
+    position: relative;
+    top: 5px;
+    left: 0;
+    padding-right: 10px;
+    font-weight: 800;
+    font-size: 1.1em;
+}

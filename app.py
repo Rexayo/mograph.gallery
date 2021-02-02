@@ -26,6 +26,7 @@ def get_videos():
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
+    videos = list(mongo.db.videos.find())
     if request.method == "POST":
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
@@ -46,11 +47,12 @@ def signup():
         flash("Sign up Successful!")
         return redirect(url_for("profile", username=session["user"]))
 
-    return render_template("signup.html")
+    return render_template("signup.html", videos=videos)
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    videos = list(mongo.db.videos.find())
     if request.method == "POST":
         # check of username exists in db
         existing_user = mongo.db.users.find_one(
@@ -74,7 +76,7 @@ def login():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
 
-    return render_template("login.html")
+    return render_template("login.html", videos=videos)
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
@@ -108,6 +110,7 @@ def logout():
 
 @app.route("/add_video", methods=["GET", "POST"])
 def add_video():
+    videos = list(mongo.db.videos.find())
     if request.method == "POST":
         video = {
             "category_name": request.form.get("category_name"),
@@ -123,7 +126,8 @@ def add_video():
         return redirect(url_for("get_videos"))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("add_video.html", categories=categories)
+    return render_template("add_video.html",
+                           categories=categories, videos=videos)
 
 
 @app.route("/edit_video/<video_id>", methods=["GET", "POST"])
@@ -181,6 +185,13 @@ def delete_video(video_id):
     if session["user"]:
         return render_template("profile.html",
                                username=username, my_videos=my_videos)
+
+
+@app.route("/get_categories")
+def get_categories():
+    videos = list(mongo.db.videos.find())
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
+    return render_template("categories.html", categories=categories, videos=videos)
 
 
 if __name__ == "__main__":

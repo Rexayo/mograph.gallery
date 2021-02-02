@@ -32,7 +32,9 @@
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
                         {% if session.user %}
-                            <li><a href="{{ url_for('logout')}}">Manage Collections</a></li>
+                            {% if session.user | lower == "admin" | lower %}
+                                <li><a href="{{ url_for('get_categories')}}">Manage Categories</a></li>
+                            {% endif%}
                             <li><a href="{{ url_for('add_video')}}">Add a Video</a></li>
                             <li><a href="{{ url_for('logout')}}">Log out</a></li>
                             <li><a href="{{ url_for('profile', username=session['user'])}}">Profile</a></li>  
@@ -64,7 +66,7 @@
         <ul class="sidenav" id="mobile-demo">
             <li><a href="{{ url_for('get_videos')}}">Home</a></li>
             {% if session.user %} 
-                <li><a href="{{ url_for('logout')}}">Manage Collections</a></li>
+                <li><a href="{{ url_for('get_categories')}}">Manage Categories</a></li>
                 <li><a href="{{ url_for('add_video')}}">Add a Video</a></li>
                 <li><a href="{{ url_for('profile', username=session['user'])}}">Profile</a></li>
                 <li><a href="{{ url_for('logout')}}">Log out</a></li>
