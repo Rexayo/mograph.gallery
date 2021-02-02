@@ -211,6 +211,23 @@ def add_category():
                            categories=categories, videos=videos)
 
 
+@app.route("/edit_category/<category_id>", methods=["GET", "POST"])
+def edit_category(category_id):
+    videos = list(mongo.db.videos.find())
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
+    if request.method == "POST":
+        submit = {
+            "category_name": request.form.get("c_name")
+        }
+        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
+        flash("Category Successfully Updated")
+        return redirect(url_for("get_categories"))
+
+    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
+    return render_template("edit_category.html",
+                           categories=categories, category=category, videos=videos)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

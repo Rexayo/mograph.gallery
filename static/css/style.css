@@ -115,22 +115,22 @@ header li {
     margin-bottom: 40px;
 }
 
-#modal1, #delete-modal{
+#modal1, #delete-modal, #add-video-modal, #add-category-modal, #edit-category-modal{
     width: 500px;
     margin-top: 100px;
     font-family: 'Manrope', sans-serif;
     border: 1px solid rgb(134, 134, 134);
 }
 
+
 #login-footer{
     padding-top: 35px !important;    
 }
 
-
-.delete-modal-footer, .add-category-modal-footer {
+.delete-modal-footer, .add-category-modal-footer, .add-video-modal-footer {
     padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
-
 
 .modal-footer a{
     margin-left: 7px;
@@ -318,14 +318,10 @@ header li {
     padding-top: 10px;;
 }
 
-/* add-video and add catergory modals */
+/* add-video and add category modals */
 
-#add-video-modal, #add-category-modal{
-    width: 500px;
-    margin-top: 100px;
-    font-family: 'Manrope', sans-serif;
-    border: 1px solid rgb(134, 134, 134);
-}
+
+
 
 .video-info .input-field {
     padding: 0;
@@ -362,6 +358,7 @@ ul.dropdown-content.select-dropdown li span:hover {
     5px 5px,
     1.5em 1.5em;
   background-repeat: no-repeat;
+  height: 200px;
 }
 
 .select-dropdown:disabled {

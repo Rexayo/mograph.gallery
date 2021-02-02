@@ -13,12 +13,12 @@
                 {% endwith %}
             </section>
 <!-- Modal Structure -->
-    <form id="add-category-modal" class="modal s12 m2 offset-m5" method="POST" action="{{ url_for('add_category')}}">
+    <form id="edit-category-modal" class="modal s12 m2 offset-m5" method="POST" action="{{ url_for('edit_category', category_id=category._id)}}">
         <div class="modal-content grey darken-4">
             <div class="row center-align"><a href="{{ url_for('get_videos')}}"
                     class="brand-logo extra-bold center-align white-text" id="modal-header">mograph<span
                         class="logo-dot">.</span>gallery</a></div>
-            <div class="row white-text center-align" id="modal-tagline">Add a Category</div>
+            <div class="row white-text center-align" id="modal-tagline">Edit Category</div>
             
             <!-- category-name -->
               
@@ -26,7 +26,7 @@
                     <div class="input-field col s12">
                         <i class="material-icons prefix yellow-text">border_color</i>
                         <input id="c_name" name="c_name" minlength="3" maxlength="25"  type="text"
-                            class="validate white-text" required>
+                             value="{{ category.category_name }}" class="validate white-text" required>
                         <label for="c_name">Category Name</label>
                     </div>
                 </div>
@@ -34,8 +34,8 @@
                 
             
             <!-- add category -->
-            <div class="row center-align grey darken-4 add-category-modal-footer modal-footer">
-                <button type="submit" id="add-category-modal-footer" class=" waves-effect waves-green btn s5 col right col extra-bold">Continue</button>
+            <div class="row center-align grey darken-4 edit-category-modal-footer modal-footer">
+                <button type="submit" id="edit-category-modal-footer" class=" waves-effect waves-green btn s5 right col extra-bold">Edit Category</button>
                 <a href="{{ url_for('get_categories')}}" class=" waves-effect waves-green btn s5 col left extra-bold">Cancel</a>
             </div>
             
@@ -64,8 +64,8 @@
         <div class="card col s8 offset-s2 grey  darken-4 waves-effect waves-block">
             <div class="card-content activator">
                 <i class="large activator material-icons white-text">folder_open</i>
-                <a href="" class="grey edit grey darken-2 modal-trigger right">Delete</a> 
-                <a href="" class="grey edit grey darken-2 right">Edit</a>   
+                <a href="" class="grey edit grey darken-2  right">Delete</a> 
+                <a href="" class="grey edit grey darken-2 modal-trigger right">Edit</a>   
                 <span class="card-title activator white-text extra-bold">{{ category.category_name }}<i
                         class="material-icons right">more_vert</i></span> 
                                          

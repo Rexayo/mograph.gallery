@@ -23,7 +23,7 @@
             <div class="card-content activator">
                 <i class="large activator material-icons white-text">folder_open</i>
                 <a href="" class="grey edit grey darken-2 modal-trigger right">Delete</a> 
-                <a href="" class="grey edit grey darken-2 right">Edit</a>   
+                <a href="{{ url_for('edit_category', category_id=category._id)}}" class="grey edit grey darken-2 right">Edit</a>   
                 <span class="card-title activator white-text extra-bold">{{ category.category_name }}<i
                         class="material-icons right">more_vert</i></span> 
                                          

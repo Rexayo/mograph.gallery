@@ -5,6 +5,7 @@ $(document).ready(function () {
     $('#modal1').modal('open');
     $('#add-video-modal').modal('open');
     $('#add-category-modal').modal('open');
+    $('#edit-category-modal').modal('open');
     
     $('select').formSelect();
 
