@@ -112,7 +112,7 @@ header li {
     margin-bottom: 40px;
 }
 
-#modal1, #delete-modal, #add-video-modal, #add-category-modal, #edit-category-modal{
+#modal1, #delete-modal, #add-video-modal,#edit-video-modal, #add-category-modal, #edit-category-modal{
     width: 500px;
     margin-top: 100px;
     font-family: 'Manrope', sans-serif !important;
@@ -514,4 +514,28 @@ ul.dropdown-content.select-dropdown li span:hover {
     padding-right: 10px;
     font-weight: 800;
     font-size: 1.1em;
+}
+
+
+/* Media queries */
+
+@media only screen and (max-width: 600px) {
+
+
+#modal1, #delete-modal, #add-video-modal, #add-category-modal, #edit-category-modal{
+    width: 300px;
+    margin-top: 100px;
+    font-family: 'Manrope', sans-serif !important;
+    border: 1px solid rgb(134, 134, 134);
+}
+
+.delete-modal {
+    width: 250px;
+    margin-top: 100px;
+    font-family: 'Manrope', sans-serif !important;
+    border: 1px solid rgb(134, 134, 134);
+}
+
+
+
 }

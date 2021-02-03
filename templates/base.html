@@ -27,7 +27,7 @@
         
         <nav class="black">
             <div class="row">
-                <div class="nav-wrapper col s8 offset-s2 margin">
+                <div class="nav-wrapper col s10 offset-s1 xl8 offset-xl2 margin">
                     <a href="{{ url_for('get_videos')}}" class="brand-logo extra-bold left" id="logo">mograph<span class="logo-dot">.</span>gallery</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
@@ -52,7 +52,7 @@
     
         <!-- search bar -->
         <div class="row">
-            <div class="nav-wrapper col s8 offset-s2">
+            <div class="nav-wrapper col s10 offset-s1 xl8 offset-xl2 ">
                 <form class="margin white-text black" id="search-bar" method="post" action="{{ url_for('search') }}" >
                     <div class="input-field">
                         <input id="search" type="text" name="search" minlength="3" class="validate" required>

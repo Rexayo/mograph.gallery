@@ -12,22 +12,7 @@
             {% endif %}
         {% endwith %}
     </section>
-    <section>
-    <div class="row margin">
-    <div class="col s8 offset-s2">
-        <div class="page-header">
-            {{ username }}
-        </div>
-        <div class="page-description">
-            {% if my_videos | length == 1 %}
-                {{ my_videos | length }} video
-            {% else %}
-                {{ my_videos | length }} videos
-            {% endif %}
-        </div>
-    </div>
-    </div>
-</section>
+   
 <section>
   <!-- Delete Modal -->
   {% for video in my_videos %}
@@ -46,11 +31,27 @@
     {% endif %}
   {% endfor %}
 </section>
+ <section>
+    <div class="row margin">
+    <div class="col s10 offset-s1 xl8 offset-xl2">
+        <div class="page-header">
+            {{ username }}
+        </div>
+        <div class="page-description">
+            {% if my_videos | length == 1 %}
+                {{ my_videos | length }} video
+            {% else %}
+                {{ my_videos | length }} videos
+            {% endif %}
+        </div>
+    </div>
+    </div>
+</section>
 <section id="video-gallery">
     {%- for num in range(0, my_videos | length, 6) -%}
         <div class="row margin">
             
-            <div class="col s8 offset-s2">
+            <div class="col s10 offset-s1 xl8 offset-xl2">
                 <!-- https://codepen.io/gaeowyn/pen/oiyHF -->
                 <div class=" video-row">
                     <ul>

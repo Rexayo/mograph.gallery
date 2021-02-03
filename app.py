@@ -141,6 +141,19 @@ def add_video():
 
 @app.route("/edit_video/<video_id>", methods=["GET", "POST"])
 def edit_video(video_id):
+
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+
+    videos = list(mongo.db.videos.find())
+
+    # create a new list of videos unique to user
+    my_videos = []
+    for video in videos:
+        if video["added_by"] == username:
+            my_videos.append(video)
+
     if request.method == "POST":
         submit = {
             "category_name": request.form.get("category_name"),
@@ -172,7 +185,8 @@ def edit_video(video_id):
     video = mongo.db.videos.find_one({"_id": ObjectId(video_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_video.html",
-                           video=video, categories=categories)
+                           video=video, categories=categories,
+                           username=username, my_videos=my_videos)
 
 
 @app.route("/delete_video/<video_id>")
