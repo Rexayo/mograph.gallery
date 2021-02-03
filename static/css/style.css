@@ -69,9 +69,29 @@ header li {
     color: white;
 }
 
+.breadcrumb-link{
+   font-family: 'Manrope', sans-serif;
+   font-weight: 400;
+   font-size: 1.1em;
+   color:grey;
+}
+.breadcrumb-active{
+   font-family: 'Manrope', sans-serif;
+   font-weight: 400;
+   font-size: 1.1em;
+   color:white;
+}
+.breadcrumb-link:hover{
+   color:white;
+}
+
+.chevron {
+    position: relative;
+    top: 7px;
+}
+
 .btn, #mobile-demo .btn {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 800;
+    
     text-transform: none;
     font-size: 1em;
     background-color: rgb(255, 255, 255);

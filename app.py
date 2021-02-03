@@ -117,7 +117,18 @@ def logout():
 
 @app.route("/add_video", methods=["GET", "POST"])
 def add_video():
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+
     videos = list(mongo.db.videos.find())
+
+    # create a new list of videos unique to user
+    my_videos = []
+    for video in videos:
+        if video["added_by"] == username:
+            my_videos.append(video)
+
     if request.method == "POST":
         embed_url = request.form.get("video_embed_url"
                                      ).split("\"")[1].split("\"")[0]
@@ -132,11 +143,20 @@ def add_video():
         }
         mongo.db.videos.insert_one(video)
         flash("Video Successfully Added")
-        return redirect(url_for("get_videos"))
+
+        # create a new list of videos unique to user
+        my_videos = []
+        for video in videos:
+            if video["added_by"] == username:
+                my_videos.append(video)
+
+        if session["user"]:
+            return render_template("profile.html",
+                                   username=username, my_videos=my_videos)
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_video.html",
-                           categories=categories, videos=videos)
+                           categories=categories, videos=videos, username=username, my_videos=my_videos)
 
 
 @app.route("/edit_video/<video_id>", methods=["GET", "POST"])
@@ -218,7 +238,6 @@ def get_categories():
                            categories=categories, videos=videos)
 
 
-
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
     videos = list(mongo.db.videos.find())
@@ -273,6 +292,20 @@ def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
     flash("Category Successfully Deleted")
     return redirect(url_for("get_categories"))
+
+
+@app.route("/open_category/<category_name>")
+def open_category(category_name):
+    videos = list(mongo.db.videos.find())
+
+    # create a new list of videos unique to user
+    category_videos = []
+    for video in videos:
+        if video["category_name"] == category_name:
+            category_videos.append(video)
+
+    return render_template("open_category.html",
+                           category_videos=category_videos)
 
 
 if __name__ == "__main__":

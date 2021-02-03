@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content%}
+{% if session.user %}
 <section>
     <!-- flash messages -->
     {% with messages = get_flashed_messages() %}
@@ -12,27 +13,35 @@
         {% endif %}
     {% endwith %}
 </section>
-
+{% endif %}
 <section>
     <div class="row margin">
         <div class="col s10 offset-s1 xl8 offset-xl2">
-            <div class="page-header">
-                Manage Categories
-            </div>
+                         
+            {% if session.user | lower == "admin" | lower %}             
+                <div class="page-header">
+                    Manage Categories
+                </div>
+            {% else %}
+                <div class="page-header">
+                    Explore Categories
+                </div>
+            {% endif%}
             <div class="page-description">
                 Curated collections by our editors
             </div>
         </div>
     </div>
 </section>
-
+{% if session.user | lower == "admin" | lower %}  
 <div class="row margin">
     <div class="col s10 offset-s1 xl8 offset-xl2">
         <span class="add-category"><a href="{{ url_for('add_category')}}"><i
                     class="material-icons large new-folder">create_new_folder</i>Add a Category</a></span>
     </div>
+{% endif%}
 </div>
-<div class="row">
+<div class="row margin">
     {% for category in categories %}
     <section>
         <!-- Delete Modal -->
@@ -54,9 +63,11 @@
     <div class="card col s10 offset-s1 xl8 offset-xl2 grey  darken-4 waves-effect waves-block">
         <div class="card-content activator">
             <i class="large activator material-icons white-text">folder_open</i>
+            {% if session.user | lower == "admin" | lower %}
             <a href="#delete-modal{{loop.index}}" class="grey edit grey darken-2 modal-trigger right">Delete</a>
             <a href="{{ url_for('edit_category', category_id=category._id)}}"
                 class="grey edit grey darken-2 right">Edit</a>
+            {% endif%}
             <span class="card-title activator white-text extra-bold">{{ category.category_name }}<i
                     class="material-icons right">more_vert</i></span>
 
@@ -72,7 +83,7 @@
                         <!-- https://codepen.io/gaeowyn/pen/oiyHF -->
                         <div class=" video-row">
                             <ul>
-                                <span class="open-category"><a href="">Explore Category<i
+                                <span class="open-category"><a href="{{ url_for('open_category', category_name=category.category_name)}}">Open Category<i
                                             class="material-icons large arrow">arrow_forward</i></a></span>
                                 {% for ind in range(videos | length) %}
                                     {% if loop.index > num and ind < (num + 6) %}
