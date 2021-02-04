@@ -139,6 +139,7 @@ def add_video():
             "video_embed_url": embed_url,
             "created_by": request.form.get("created_by"),
             "sound_by": request.form.get("sound_by"),
+            "tags": request.form.get("tags"),
             "added_by": session["user"]
         }
         mongo.db.videos.insert_one(video)
@@ -182,6 +183,7 @@ def edit_video(video_id):
             "video_embed_url": request.form.get("video_embed_url"),
             "created_by": request.form.get("created_by"),
             "sound_by": request.form.get("sound_by"),
+            "tags": request.form.get("tags"),
             "added_by": session["user"]
         }
         mongo.db.videos.update({"_id": ObjectId(video_id)}, submit)

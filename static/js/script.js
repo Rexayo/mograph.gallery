@@ -6,9 +6,22 @@ $(document).ready(function () {
     $('#add-video-modal').modal('open');
     $('#add-category-modal').modal('open');
     $('#edit-category-modal').modal('open');
-    
     $('select').formSelect();
 
+    // scroll to top
+    $(window).scroll(function () {
+    if ($(this).scrollTop() > 50) {
+      $("#scroll-to-top").fadeIn("slow");
+    } else {
+      $("#scroll-to-top").fadeOut("slow");
+    }
+  });
+  $("#scroll-to-top").click(function () {
+    $("html, body").animate({ scrollTop: 0 }, 500, "swing");
+    return false;
+  });
+
+  
     validateMaterializeSelect();
     function validateMaterializeSelect() {
         let classValid = { "border-bottom": "1px solid #4caf50", "box-shadow": "0 1px 0 0 #4caf50" };
