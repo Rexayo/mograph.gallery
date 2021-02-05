@@ -50,8 +50,8 @@
                 <div class="row">
                     <div class="input-field col s12 ">
                         <i class="material-icons prefix yellow-text">comment</i>
-                        <textarea id="video_description" name="video_description" minlength="5" maxlength="500" 
-                         class="validate white-text materialize-textarea" required>{{- video.video_description -}}</textarea>
+                        <textarea id="video_description" name="video_description" minlength="5" maxlength="700" 
+                         class="validate white-text materialize-textarea" >{{- video.video_description -}}</textarea>
                         <label for="video_description">Description</label>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                 <div class="row">
                     <div class="input-field col s12 ">
                         <i class="material-icons prefix yellow-text">language</i>
-                        <input id="video_embed_url" name="video_embed_url" minlength="5" maxlength="500" type="url"
+                        <input id="video_embed_url" name="video_embed_url" minlength="5" maxlength="500" type="text"
                            value="{{- video.video_embed_url -}}" class="validate white-text" required>
                         <label for="video_embed_url">Paste embed url</label>
                     </div>
@@ -78,7 +78,7 @@
                     <div class="input-field col s12 ">
                         <i class="material-icons prefix yellow-text">audiotrack</i>
                         <input id="sound_by" name="sound_by" minlength="5" maxlength="300" type="text"
-                           value="{{- video.sound_by -}}" class="validate white-text" required>
+                           value="{{- video.sound_by -}}" class="validate white-text">
                         <label for="sound_by">Sound by</label>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                     <div class="input-field col s12 ">
                         <i class="material-icons prefix yellow-text">label</i>
                         <input id="tags" name="tags" minlength="5" maxlength="300" type="text"
-                            value="{{- video.tags -}}" class="validate white-text" required>
+                            value="{{- video.tags -}}" class="validate white-text">
                         <label for="tags">Tags</label>
                     </div>
                 </div>
@@ -157,7 +157,7 @@
                                     </div>
                                 </div>
                                 
-                                <iframe src="{{my_videos[ind].video_embed_url}}?api=1&autoplay=0&transparent=0&controls=0"
+                                <iframe src="{{my_videos[ind].video_embed_url}}?color=00ef93&title=0&byline=0&portrait=0?api=1&autoplay=0&transparent=0&controls=0"
                                     id="player{{ loop.index + num}}" class="video-frame" type="text/html" frameborder="0"
                                     allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen
                                     allowfullscreen></iframe>

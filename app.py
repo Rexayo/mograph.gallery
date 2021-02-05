@@ -119,7 +119,7 @@ def logout():
 def add_video():
     # grab the session user's username from db
     username = mongo.db.users.find_one(
-            {"username": session["user"]})["username"]
+        {"username": session["user"]})["username"]
 
     videos = list(mongo.db.videos.find())
 
@@ -144,12 +144,12 @@ def add_video():
         }
         mongo.db.videos.insert_one(video)
         flash("Video Successfully Added")
-
         # create a new list of videos unique to user
         my_videos = []
         for video in videos:
             if video["added_by"] == username:
                 my_videos.append(video)
+            return redirect(url_for("profile", username=session['user']))
 
         if session["user"]:
             return render_template("profile.html",
@@ -157,7 +157,8 @@ def add_video():
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_video.html",
-                           categories=categories, videos=videos, username=username, my_videos=my_videos)
+                           categories=categories, videos=videos,
+                           username=username, my_videos=my_videos)
 
 
 @app.route("/edit_video/<video_id>", methods=["GET", "POST"])
@@ -165,7 +166,7 @@ def edit_video(video_id):
 
     # grab the session user's username from db
     username = mongo.db.users.find_one(
-            {"username": session["user"]})["username"]
+        {"username": session["user"]})["username"]
 
     videos = list(mongo.db.videos.find())
 
@@ -176,11 +177,17 @@ def edit_video(video_id):
             my_videos.append(video)
 
     if request.method == "POST":
+        if "src=" in request.form.get("video_embed_url"):
+            embed_url = request.form.get("video_embed_url"
+                                         ).split("\"")[1].split("\"")[0]
+        else:
+            embed_url = request.form.get("video_embed_url")
+
         submit = {
             "category_name": request.form.get("category_name"),
             "video_name": request.form.get("video_name"),
             "video_description": request.form.get("video_description"),
-            "video_embed_url": request.form.get("video_embed_url"),
+            "video_embed_url": embed_url,
             "created_by": request.form.get("created_by"),
             "sound_by": request.form.get("sound_by"),
             "tags": request.form.get("tags"),
@@ -199,6 +206,7 @@ def edit_video(video_id):
         for video in videos:
             if video["added_by"] == username:
                 my_videos.append(video)
+        return redirect(url_for("profile", username=session['user']))
 
         if session["user"]:
             return render_template("profile.html",
@@ -274,7 +282,7 @@ def edit_category(category_id):
             if current_name == request.form.get("c_name").lower():
                 flash("Category already exists")
                 return redirect(url_for('edit_category',
-                                category_id=category["_id"]))
+                                        category_id=category["_id"]))
 
         submit = {
             "category_name": request.form.get("c_name")

@@ -69,7 +69,7 @@
         </div>
     
         <!-- mobile sidenav -->
-        <ul class="sidenav" id="mobile-demo">
+        <ul class="sidenav margin" id="mobile-demo">
             <li><a href="{{ url_for('get_videos')}}">Home</a></li>
             {% if session.user %} 
                 {% if session.user | lower == "admin" | lower %}
