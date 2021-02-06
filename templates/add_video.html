@@ -60,22 +60,13 @@
                         <label for="video-embed-url">Paste embed url</label>
                     </div>
                 </div>
-                <!-- video-created-by -->
+                <!-- video_credits -->
                 <div class="row">
                     <div class="input-field col s12 ">
                         <i class="material-icons prefix yellow-text">movie_creation</i>
-                        <input id="created_by" name="created_by" minlength="5" maxlength="300" type="text"
+                        <input id="video_credits" name="video_credits" minlength="5" maxlength="600" type="text"
                             class="validate white-text" required>
-                        <label for="created_by">Created by</label>
-                    </div>
-                </div>
-                <!-- video-sound-by -->
-                <div class="row">
-                    <div class="input-field col s12 ">
-                        <i class="material-icons prefix yellow-text">audiotrack</i>
-                        <input id="sound_by" name="sound_by" minlength="5" maxlength="300" type="text"
-                            class="validate white-text" >
-                        <label for="sound_by">Sound by</label>
+                        <label for="video_credits">Created by</label>
                     </div>
                 </div>
                 <!-- tags -->
@@ -137,13 +128,12 @@
 
                                         <a href="#" class="video-controls" id="{{ loop.index + num }}">Show video
                                             controls</a>
-                                        <a href="#" class="learn-more-link tooltipped"  data-position="right" data-tooltip="Click to learn more"><i class="tiny material-icons">info_outline</i></a>
+                                        <a href="#" class="learn-more-link tooltipped"  data-position="right" data-tooltip="Learn more"><i class="tiny material-icons">info_outline</i></a>
                                         <p class="learn-more white-text">
                                             {{ my_videos[ind].video_description }}<br>
                                             <br>
-                                            Created by: {{ my_videos[ind].created_by }}<br>
+                                            Credit: {{ my_videos[ind].video_credit }}<br>
                                             <br>
-                                            Sound by: {{ my_videos[ind].sound_by }}<br>
                                             <br>
                                             <br>
                                             <br>

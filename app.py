@@ -20,12 +20,20 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_videos")
 def get_videos():
+    """
+    This function is for retrieving all videos from the database.
+    """
+
     videos = list(mongo.db.videos.find())
     return render_template("videos.html", videos=videos)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    """
+    This function is for searching through all videos from the database.
+    """
+
     search = request.form.get("search")
     videos = list(mongo.db.videos.find({"$text": {"$search": search}}))
     return render_template("videos.html", videos=videos)
@@ -33,6 +41,10 @@ def search():
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
+    """
+    This function is for sign up.
+    """
+
     videos = list(mongo.db.videos.find())
     if request.method == "POST":
         # check if username already exists in db
@@ -59,6 +71,10 @@ def signup():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """
+    This function is for login.
+    """
+
     videos = list(mongo.db.videos.find())
     if request.method == "POST":
         # check of username exists in db
@@ -88,6 +104,10 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    """
+    This function is for retrieving all videos and info
+    unique to the current user from database.
+    """
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
@@ -109,6 +129,10 @@ def profile(username):
 
 @app.route("/logout")
 def logout():
+    """
+    This function is for log out.
+    """
+
     # remove user from session cookie
     flash("You have been logged out")
     session.pop("user")
@@ -117,6 +141,10 @@ def logout():
 
 @app.route("/add_video", methods=["GET", "POST"])
 def add_video():
+    """
+    This function is for adding a new video to the database.
+    """
+
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
@@ -137,8 +165,7 @@ def add_video():
             "video_name": request.form.get("video_name"),
             "video_description": request.form.get("video_description"),
             "video_embed_url": embed_url,
-            "created_by": request.form.get("created_by"),
-            "sound_by": request.form.get("sound_by"),
+            "video_credit": request.form.get("video_credit"),
             "tags": request.form.get("tags"),
             "added_by": session["user"]
         }
@@ -163,6 +190,9 @@ def add_video():
 
 @app.route("/edit_video/<video_id>", methods=["GET", "POST"])
 def edit_video(video_id):
+    """
+    This function is for editing videos uploaded by current user.
+    """
 
     # grab the session user's username from db
     username = mongo.db.users.find_one(
@@ -188,8 +218,7 @@ def edit_video(video_id):
             "video_name": request.form.get("video_name"),
             "video_description": request.form.get("video_description"),
             "video_embed_url": embed_url,
-            "created_by": request.form.get("created_by"),
-            "sound_by": request.form.get("sound_by"),
+            "video_credit": request.form.get("video_credit"),
             "tags": request.form.get("tags"),
             "added_by": session["user"]
         }
@@ -206,11 +235,8 @@ def edit_video(video_id):
         for video in videos:
             if video["added_by"] == username:
                 my_videos.append(video)
-        return redirect(url_for("profile", username=session['user']))
-
-        if session["user"]:
-            return render_template("profile.html",
-                                   username=username, my_videos=my_videos)
+        return render_template("profile.html",
+                               username=username, my_videos=my_videos)
 
     video = mongo.db.videos.find_one({"_id": ObjectId(video_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
@@ -221,6 +247,9 @@ def edit_video(video_id):
 
 @app.route("/delete_video/<video_id>")
 def delete_video(video_id):
+    """
+    This function is for deleting videos uploaded by current user.
+    """
     mongo.db.videos.remove({"_id": ObjectId(video_id)})
     flash("Video Successfully Deleted")
     # grab the session user's username from db
@@ -242,6 +271,10 @@ def delete_video(video_id):
 
 @app.route("/get_categories")
 def get_categories():
+    """
+    This function is for retrieving all categories from the database.
+    """
+
     videos = list(mongo.db.videos.find())
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template("categories.html",
@@ -250,6 +283,10 @@ def get_categories():
 
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
+    """
+    This function is for adding categories to the database (for admin only).
+    """
+
     videos = list(mongo.db.videos.find())
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     if request.method == "POST":
@@ -273,6 +310,10 @@ def add_category():
 
 @app.route("/edit_category/<category_id>", methods=["GET", "POST"])
 def edit_category(category_id):
+    """
+    This function is for editing categories on the database (for admin only).
+    """
+
     videos = list(mongo.db.videos.find())
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     if request.method == "POST":
@@ -299,6 +340,10 @@ def edit_category(category_id):
 
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
+    """
+    This function is for delete categories from the database (for admin only).
+    """
+
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
     flash("Category Successfully Deleted")
     return redirect(url_for("get_categories"))
@@ -308,7 +353,7 @@ def delete_category(category_id):
 def open_category(category_name):
     videos = list(mongo.db.videos.find())
 
-    # create a new list of videos unique to user
+    # create a new list of videos unique to category
     category_videos = []
     for video in videos:
         if video["category_name"] == category_name:
@@ -322,3 +367,4 @@ if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
+    # TODO remember to  change debug=False

@@ -43,6 +43,7 @@
 </div>
 <div class="row margin">
     {% for category in categories %}
+    {% set category_videos = [] %}
     <section>
         <!-- Delete Modal -->
         <div id="delete-modal{{loop.index}}" class="delete-modal modal grey darken-4 white-text center-align">
@@ -83,20 +84,23 @@
                         <!-- https://codepen.io/gaeowyn/pen/oiyHF -->
                         <div class=" video-row">
                             <ul>
-                                <span class="open-category"><a href="{{ url_for('open_category', category_name=category.category_name)}}">Open Category<i
-                                            class="material-icons large arrow">arrow_forward</i></a></span>
-                                {% for ind in range(videos | length) %}
-                                    {% if loop.index > num and ind < (num + 6) %}
-                                        {% if videos[ind].category_name == category.category_name %}
+                                <a  class="open-category" href="{{ url_for('open_category', category_name=category.category_name)}}">Open Category<i
+                                            class="material-icons large arrow">arrow_forward</i></a>
+                                
+                                {% for video in videos %}
+                                    {% if video.category_name == category.category_name %}
+                                        {{ category_videos.append(video) }}
+                                    {% endif %}
+                                   
+                                {% endfor %}
+                                {% for category_video in category_videos %}
                                             <li class="video">
                                                 <iframe
-                                                    src="{{videos[ind].video_embed_url}}?api=1&autoplay=0&transparent=0&controls=0"
+                                                    src="{{category_video.video_embed_url}}?api=1&autoplay=0&transparent=0&controls=0"
                                                     id="player{{ loop.index + num}}" type="text/html" frameborder="0"
                                                     allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen
                                                     mozallowfullscreen allowfullscreen></iframe>
                                             </li>
-                                        {% endif %}
-                                    {% endif %}
                                 {% endfor %}
                             </ul>
                         </div>

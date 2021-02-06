@@ -14,13 +14,14 @@
         {% endwith %}
     </section>
 {% endif %}
-{% for video in category_videos %}
+{% if category_videos | length > 0 %}
+
 <div class="nav">
 <div class="row margin nav-wrapper">
       <div class="col s10 offset-s1 xl8 offset-xl2">
-        <a href="{{ url_for('get_categories')}}" class="breadcrumb-link">Explore Category</a>
+        <a href="{{ url_for('get_categories')}}" class="breadcrumb-link">Explore Categories</a>
         <i class="material-icons chevron white-text">chevron_right</i>
-        <a href="#" class="breadcrumb-active" >{{ video.category_name }}</a>
+        <a href="#" class="breadcrumb-active" >{{ category_videos[0].category_name }}</a>
       </div>
 </div>
 </div>
@@ -28,7 +29,7 @@
     <div class="row">
     <div class="col s10 offset-s1 xl8 offset-xl2">
         <div class="page-header">
-            {{ video.category_name }}
+            {{ category_videos[0].category_name }}
         </div>
     </div>
     </div>
@@ -58,9 +59,8 @@
                                         <p class="learn-more white-text">
                                             {{ category_videos[ind].video_description }}<br>
                                             <br>
-                                            Created by: {{ category_videos[ind].created_by }}<br>
+                                            Credit: {{ category_videos[ind].video_credit }}<br>
                                             <br>
-                                            Sound by: {{ category_videos[ind].sound_by }}<br>
                                             <br>
                                             <br>
                                             <br>
@@ -84,5 +84,6 @@
 
     {%- endfor -%}
 </section>    
-{%- endfor -%}
+
+{% endif %}
 {% endblock %}
