@@ -57,8 +57,10 @@
                                             controls</a>
                                         <a href="#" class="learn-more-link tooltipped"  data-position="right" data-tooltip="Click to learn more"><i class="tiny material-icons">info_outline</i></a>
                                         <p class="learn-more white-text">
-                                            {{ category_videos[ind].video_description }}<br>
-                                            <br>
+                                            {% if category_videos[ind].video_description | length > 0 %}
+                                                {{ category_videos[ind].video_description }}<br>
+                                                <br>
+                                            {% endif %}
                                             Credit: {{ category_videos[ind].video_credit }}<br>
                                             <br>
                                             <br>

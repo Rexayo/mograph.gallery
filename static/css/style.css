@@ -4,6 +4,11 @@
 
 /*--- utilities start here--- */
 
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 body a{
     color: white;
 }
@@ -588,8 +593,9 @@ ul.dropdown-content.select-dropdown li span:hover {
     font-size: 1.1em;
 }
 
-.page-footer , .footer-copyright {
-    border-top: 1px solid rgb(32, 32, 32);
+.page-footer , .footer-copyright { 
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .page-footer i {

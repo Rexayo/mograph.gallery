@@ -64,9 +64,9 @@
                 <div class="row">
                     <div class="input-field col s12 ">
                         <i class="material-icons prefix yellow-text">movie_creation</i>
-                        <input id="video_credits" name="video_credits" minlength="5" maxlength="600" type="text"
-                            class="validate white-text" required>
-                        <label for="video_credits">Created by</label>
+                        <textarea id="video_credit" name="video_credit" minlength="5" maxlength="600" 
+                            class="validate white-text materialize-textarea" required></textarea>
+                        <label for="video_credit">Credit</label>
                     </div>
                 </div>
                 <!-- tags -->
@@ -130,8 +130,10 @@
                                             controls</a>
                                         <a href="#" class="learn-more-link tooltipped"  data-position="right" data-tooltip="Learn more"><i class="tiny material-icons">info_outline</i></a>
                                         <p class="learn-more white-text">
-                                            {{ my_videos[ind].video_description }}<br>
-                                            <br>
+                                            {% if my_videos[ind].video_description | length > 0 %}
+                                                {{ my_videos[ind].video_description }}<br>
+                                                <br>
+                                            {% endif %}
                                             Credit: {{ my_videos[ind].video_credit }}<br>
                                             <br>
                                             <br>
