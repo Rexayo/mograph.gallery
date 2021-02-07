@@ -22,6 +22,10 @@ body a:hover{
     margin-top: 80px;
 }
 
+.mobile-margin {
+    margin-top: 20px;
+}
+
 .extra-bold {
     font-family: 'Manrope', sans-serif;
     font-weight: 800 !important;
@@ -68,11 +72,13 @@ header li {
 #search{
     border-radius: 0;
     border-bottom: 1px solid grey;
-    width: 250px;
+    width: 220px;
     padding: 0px 10px;
     height: 40px !important;
     caret-color: white !important;
 }
+
+
 
 #search-bar{
    margin-top: 0;
@@ -80,7 +86,8 @@ header li {
 
 #search-icon {
     position: relative;
-    top: 10px;
+    left: 243px;
+    top: 55px;
 }
 
 #search:focus {
@@ -279,7 +286,7 @@ nav #scroll-to-top:focus {
 .video-row ul {
   list-style:none;
   width:66.67vw;
-  height:458px;
+  height:450px;
   overflow:hidden;
   
 }
@@ -315,7 +322,7 @@ nav #scroll-to-top:focus {
 }
 
 .video-row ul li:hover {
-  width: 52vw;
+  width: 40vw;
   filter: brightness(100%);
 }
 
@@ -358,6 +365,9 @@ nav #scroll-to-top:focus {
 .learn-more-link {
     color: grey;
     padding-bottom: 10px;
+}
+.added-by {
+    color: grey;
 }
 
 .material-tooltip {
@@ -592,9 +602,15 @@ ul.dropdown-content.select-dropdown li span:hover {
     font-size: 1.1em;
 }
 
-.page-footer , .footer-copyright { 
+ .footer-copyright { 
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
+    font-size: 0.85em;
+
+}
+
+.page-footer {
+    padding-bottom: 10px;
 }
 
 .page-footer i {
@@ -607,9 +623,29 @@ ul.dropdown-content.select-dropdown li span:hover {
     font-family: 'Manrope', sans-serif !important;
 }
 
+#video-gallery-2, #video-gallery-1 {
+    display: none;
+}
 
 /* Media queries */
+@media only screen and (max-width: 1700px) {
+
+    .video-row ul li:hover  {
+        width: 52vw;
+    }
+  
+}
+
 @media only screen and (max-width: 1200px) {
+    
+    #video-gallery-2 {
+        display: block;
+    }
+
+    #video-gallery, #video-gallery-1 {
+        display: none;
+    }
+
     .video-row ul {
         width:75vw;
     }
@@ -622,30 +658,84 @@ ul.dropdown-content.select-dropdown li span:hover {
     .video-row ul li:focus,.video-row ul li:active, .video-row ul li:hover  {
         width: 65vw;
     }
-
+   
     .learn-more-link span {
         position: relative;
         left: 5px;
         bottom: 2px;
     }
+
+ 
 }
+
+
+@media only screen and (max-width: 992px) {
+    #video-gallery-1 {
+        display: block;
+    }
+
+    #video-gallery, #video-gallery-2 {
+        display: none;
+    }
+
+    .video-row ul {
+        list-style:none;
+        width:76vw;
+        height: 90vw;
+        overflow:hidden;
+        
+        }
+    .video-row .learn-more {
+        width:60vw;
+        height: 40vw;
+        overflow: scroll;
+        
+        }
+
+    .video-row iframe {
+        width:76vw;
+        height: 42.75vw;
+        }
+
+    .video-row ul li {
+        width:76vw;
+        filter: brightness(100%);
+        height: 33.75vw;
+        }
+
+    .video-label {
+        width:76vw;
+        height: auto;
+        padding: 10px 20px;
+        font-family: 'Manrope', sans-serif;
+        font-size: 0.95em;
+        }
+
+    .video-label h6 {
+        font-family: 'Manrope', sans-serif;
+        font-size: 1.3em; 
+        }
+
+    /* .search-icon {
+        display: none;
+    } */
+
+}
+
 
 
 @media only screen and (max-width: 600px) {
-#modal1, #delete-modal, #add-video-modal, #add-category-modal, #edit-category-modal, #uploadModal{
-    width: 300px;
-    margin-top: 100px;
-    font-family: 'Manrope', sans-serif !important;
-    border: 1px solid rgb(134, 134, 134);
-}
+    #modal1, #delete-modal, #add-video-modal, #add-category-modal, #edit-category-modal, #uploadModal{
+        width: 300px;
+        margin-top: 100px;
+        font-family: 'Manrope', sans-serif !important;
+        border: 1px solid rgb(134, 134, 134);
+    }
 
-.delete-modal {
-    width: 250px;
-    margin-top: 100px;
-    font-family: 'Manrope', sans-serif !important;
-    border: 1px solid rgb(134, 134, 134);
-}
-
-
-
+    .delete-modal {
+        width: 250px;
+        margin-top: 100px;
+        font-family: 'Manrope', sans-serif !important;
+        border: 1px solid rgb(134, 134, 134);
+    }
 }

@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     $('.sidenav').sidenav({ edge: "right" });
     $('.modal').modal();
@@ -10,18 +11,18 @@ $(document).ready(function () {
 
     // scroll to top
     $(window).scroll(function () {
-    if ($(this).scrollTop() > 50) {
-      $("#scroll-to-top").fadeIn("slow");
-    } else {
-      $("#scroll-to-top").fadeOut("slow");
-    }
-  });
-  $("#scroll-to-top").click(function () {
-    $("html, body").animate({ scrollTop: 0 }, 500, "swing");
-    return false;
-  });
+        if ($(this).scrollTop() > 50) {
+            $("#scroll-to-top").fadeIn("slow");
+        } else {
+            $("#scroll-to-top").fadeOut("slow");
+        }
+    });
+    $("#scroll-to-top").click(function () {
+        $("html, body").animate({ scrollTop: 0 }, 500, "swing");
+        return false;
+    });
 
-  
+
     validateMaterializeSelect();
     function validateMaterializeSelect() {
         let classValid = { "border-bottom": "1px solid #4caf50", "box-shadow": "0 1px 0 0 #4caf50" };
@@ -49,16 +50,6 @@ $(document).ready(function () {
             }
         });
     }
-    
-    // $('#category_name').css('display', 'none');
-    // $("#add-video-modal-footer").on("click", function () {
-    //     $('#category_name').css('display', 'block');
-
-    //     $('#add-video-modal-footer').mouseleave(function () {
-    //         $('#category_name').css('display', 'none');
-    //     });
-
-    // });
 
     // https://stackoverflow.com/questions/35549780/play-vimeo-videos-on-mouse-hover
     $('.video-frame').mouseover(function () {
@@ -69,6 +60,7 @@ $(document).ready(function () {
             froogaloop.api('pause');
         });
     });
+
 
     $('.video').mouseenter(function () {
         $(this).find(".video-controls").fadeIn();
@@ -83,13 +75,60 @@ $(document).ready(function () {
         $('.learn-more-link').css('color', '');
     });
 
-   
-    
-    $(".learn-more-link").mouseenter(function () {
-        $(this).next('.learn-more').slideToggle("slow");
-        $(this).css('color', '#ffeb3b');
-        $(".video-controls").fadeToggle();
-    });
+    function responsiveGallery(breakPt1) {
+        if (breakPt1.matches) {
+            $(".learn-more-link").click(function () {
+                if ($(this).next('.learn-more').css('display') == 'none') {
+                    $(this).next('.learn-more').slideDown("slow");
+                    $(this).css('color', '#ffeb3b');
+
+                    var padding = 200;
+                    var panel = $(this).next('.learn-more');
+
+                    $("html, body").animate(
+                        {
+                            scrollTop: panel.offset().top - padding,
+                        },
+                        1000,
+                        "swing"
+                    );
+
+                } else {
+                    $(this).next('.learn-more').slideUp("slow");
+                    $(this).css('color', 'grey');
+
+                    var padding = 200;
+                    var panel = $(this);
+
+                    $("html, body").animate(
+                        {
+                            scrollTop: panel.offset().top - padding,
+                        },
+                        1000,
+                        "swing"
+                    );
+                }
+
+
+
+
+            });
+
+        } else {
+            $(".learn-more-link").mouseenter(function () {
+                $(this).next('.learn-more').slideToggle("slow");
+                $(this).css('color', '#ffeb3b');
+                $(".video-controls").fadeToggle();
+                if ($(this).next('.learn-more').css('color') == '#ffeb3b') {
+                    $(this).next('.learn-more').slideUp("slow");
+                    $(this).css('color', 'grey');
+                }
+            });
+        }
+    }
+    var breakPt1 = window.matchMedia("(max-width: 1200px)")
+    responsiveGallery(breakPt1); // Call listener function at run time
+    breakPt1.addListener(responsiveGallery) // Attach listener function on state changes
 
 
     var hideCounter = 1;
@@ -100,9 +139,31 @@ $(document).ready(function () {
             var newSrc = currSrc.replace("&controls=0", "&controls=1");
             $(this).html("Hide video controls");
 
+            var padding = 200;
+            var panel = $(this);
+
+            $("html, body").animate(
+                {
+                    scrollTop: panel.offset().top - padding,
+                },
+                1000,
+                "swing"
+            );
+
         } else {
             var newSrc = currSrc.replace("&controls=1", "&controls=0");
             $(this).html("Show video controls");
+
+            var padding = 200;
+            var panel = $(this);
+
+            $("html, body").animate(
+                {
+                    scrollTop: panel.offset().top - padding,
+                },
+                1000,
+                "swing"
+            );
         }
         video.attr("src", newSrc);
         hideCounter++;

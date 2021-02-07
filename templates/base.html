@@ -25,8 +25,8 @@
         
         <nav class="black">
             <div class="row">
-                <div class="nav-wrapper col s10 offset-s1 xl8 offset-xl2 margin">
-                    <a href="{{ url_for('get_videos')}}" class="brand-logo extra-bold left" id="logo">mograph<span class="logo-dot">.</span>gallery</a>
+                <div class="nav-wrapper col s10 offset-s1  xl8 offset-xl2 margin">
+                    <a href="{{ url_for('get_videos')}}" class="brand-logo extra-bold left bigScreen" id="logo">mograph<span class="logo-dot">.</span>gallery</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
                         {% if session.user %}
@@ -58,12 +58,14 @@
     
         <!-- search bar -->
         <div class="row">
-            <div class="nav-wrapper col s10 offset-s1 xl8 offset-xl2 ">
+            <div class="nav-wrapper col s10 offset-s1  xl8 offset-xl2 ">
+                <i class="material-icons small yellow-text" id="search-icon">search</i>
                 <form class="margin white-text black" id="search-bar" method="post" action="{{ url_for('search') }}" >
                     <div class="input-field">
+                        
                         <input id="search" type="text" name="search" minlength="3" class="validate" required>
-                        <label for="search" class="grey-text">Search Videos</label>  
-                        <i class="material-icons small yellow-text" id="search-icon">search</i>
+                        <label for="search" class="grey-text search-label">Search Videos</label>  
+                        
                     </div>
                 </form>
             </div>
@@ -93,7 +95,7 @@
     </header>
     <section>
         <!-- Modal Structure -->
-        <div id="uploadModal" class="modal s12 m2 offset-m5">
+        <div id="uploadModal" class="modal s10 offset-s1 m2 offset-m5">
             <i class="material-icons right white-text modal-close upload-modal-footer">close</i>
             <div class="modal-content grey darken-4 white-text">
                 <div class="row center-align"><a href="{{ url_for('get_videos')}}"
@@ -102,7 +104,7 @@
                 <div class="row white-text center-align" id="modal-tagline">Tips to get you going</div>
                 
                 <div class="row">
-                    <ul class="col s12 white-text upload">
+                    <ul class="col s10 offset-s1 white-text upload">
                         <li>
                             Create an account and Log in.
     
@@ -131,7 +133,7 @@
                             the <strong>Edit</strong> button and follow steps 3 and 4 above.
                         </li>
                     </ul>
-                    <h6 class="col s12 white-text footnote">*The gallery currently only supports videos uploaded to Vimeo.
+                    <h6 class="col s10 offset-s1 white-text footnote">*The gallery currently only supports videos uploaded to Vimeo.
                     </h6>
                 </div>
                 
@@ -148,13 +150,13 @@
    <!-- Footer starts here -->
   <footer class="page-footer margin grey darken-4 grey-text">
             <div class="row">
-              <div class="col s10 offset-s1 xl4 offset-xl2">
+              <div class="col s10 offset-s1  xl4 offset-xl2">
                 <h5 class=" extra-bold grey-text">mograph<span class="logo-dot">.</span>gallery</h5>
                 <p class="white-text text-lighten-4 regular">If you have questions, comments, or suggestions, we would love to hear from you.</p>
                 <a class="extra-bold" href="mailto:info@mograph.gallery" target="_blank"><i class="material-icons">mail_outline</i> Drop us a message.</a>
               </div>
               
-              <div class="col s10 offset-s1 xl4 offset-xl2">
+              <div class="col s10 offset-s1  xl4 offset-xl2">
                 <h5 class="grey-text regular">Links</h5>
                 <ul class="extra-bold">
                  {% if session.user %}
@@ -178,7 +180,7 @@
               </div>
             </div>
           <div class="footer-copyright row grey-text">
-            <div class="light col s10 offset-s1 xl8 offset-xl2">Copyright © 2021 mograph.gallery. All rights reserved.</div>     
+            <div class="light col s10 offset-s1  xl8 offset-xl2">Copyright © 2021 mograph.gallery. All rights reserved.</div>     
             </div>
         </footer>
     <!-- Footer ends here -->
