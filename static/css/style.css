@@ -315,7 +315,7 @@ nav #scroll-to-top:focus {
 }
 
 .video-row ul li:hover {
-  width: 30vw;
+  width: 52vw;
   filter: brightness(100%);
 }
 
@@ -609,10 +609,29 @@ ul.dropdown-content.select-dropdown li span:hover {
 
 
 /* Media queries */
+@media only screen and (max-width: 1200px) {
+    .video-row ul {
+        width:75vw;
+    }
+
+    .video-row ul li {
+        filter: brightness(100%);
+    }
+
+
+    .video-row ul li:focus,.video-row ul li:active, .video-row ul li:hover  {
+        width: 65vw;
+    }
+
+    .learn-more-link span {
+        position: relative;
+        left: 5px;
+        bottom: 2px;
+    }
+}
+
 
 @media only screen and (max-width: 600px) {
-
-
 #modal1, #delete-modal, #add-video-modal, #add-category-modal, #edit-category-modal, #uploadModal{
     width: 300px;
     margin-top: 100px;

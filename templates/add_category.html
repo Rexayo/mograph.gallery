@@ -87,7 +87,7 @@
                         <i class="material-icons right white-text">close</i>
                     </span>
                     <section id="video-gallery">
-                        {%- for num in range(0, videos | length, 6) -%}
+                        {%- for num in range(0, videos | length, 4) -%}
                             <div class="row">
                                 <div class="col s12 " id="category-videos">
                                     <!-- https://codepen.io/gaeowyn/pen/oiyHF -->
@@ -95,7 +95,7 @@
                                         <ul> 
                                         <span class="open-category"><a href="" >Explore Category<i class="material-icons large arrow">arrow_forward</i></a></span>
                                         {% for ind in range(videos | length) %}
-                                                {% if loop.index > num and ind < (num + 6) %}
+                                                {% if loop.index > num and ind < (num + 4) %}
                                                     {% if videos[ind].category_name == category.category_name %}
                                                         <li class="video">
                                                             <iframe src="{{videos[ind].video_embed_url}}?api=1&autoplay=0&transparent=0&controls=0"

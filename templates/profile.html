@@ -48,7 +48,7 @@
     </div>
 </section>
 <section id="video-gallery">
-    {% for num in range(0, my_videos | length, 6) %}
+    {% for num in range(0, my_videos | length, 4) %}
         <div class="row margin">
             
             <div class="col s10 offset-s1 xl8 offset-xl2">
@@ -56,7 +56,7 @@
                 <div class=" video-row">
                     <ul>
                         {% for ind in range(my_videos | length) %}
-                            {% if loop.index > num and ind < (num + 6) %}
+                            {% if loop.index > num and ind < (num + 4) %}
                             <li class="video">
                                 <div class="grey darken-4 white-text video-label">
                                     <h6>{{ my_videos[ind].video_name }}</h6>
