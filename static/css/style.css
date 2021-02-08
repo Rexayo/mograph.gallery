@@ -365,6 +365,8 @@ nav #scroll-to-top:focus {
 .learn-more-link {
     color: grey;
     padding-bottom: 10px;
+    position: relative;
+    bottom: -2px;
 }
 .added-by {
     color: grey;
@@ -602,6 +604,8 @@ ul.dropdown-content.select-dropdown li span:hover {
     font-size: 1.1em;
 }
 
+
+
  .footer-copyright { 
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
@@ -617,6 +621,7 @@ ul.dropdown-content.select-dropdown li span:hover {
     position: relative;
     top: 6px;
 }
+
 
 .upload {
     font-size: 1.1em;

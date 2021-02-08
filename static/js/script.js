@@ -1,5 +1,6 @@
 
 $(document).ready(function () {
+    
     $('.sidenav').sidenav({ edge: "right" });
     $('.modal').modal();
     $('.tooltipped').tooltip();
@@ -169,6 +170,18 @@ $(document).ready(function () {
         hideCounter++;
         return hideCounter;
     });
+
+    $("#base-footer").css('display', 'none');
+    var hideFooterArray = ["login", "signup"];
+
+    for (let i = 0; i < hideFooterArray.length; i++) {
+        if (window.location.href.indexOf(hideFooterArray[i]) == -1) {
+            $("#base-footer").remove();
+        }
+    }
+    
+
+    
 });
 
 

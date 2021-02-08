@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% include "profile.html" %}
 {% block content%}
 
 <!-- Modal Structure -->
@@ -89,75 +89,6 @@
         </div>
             
     </form>
-     <section>
-    <div class="row margin">
-    <div class="col s10 offset-s1 xl8 offset-xl2">
-        <div class="page-header">
-            {{ username }}
-        </div>
-        <div class="page-description">
-            {% if my_videos | length == 1 %}
-                {{ my_videos | length }} video
-            {% else %}
-                {{ my_videos | length }} videos
-            {% endif %}
-        </div>
-    </div>
-    </div>
-</section>
-<section id="video-gallery">
-    {%- for num in range(0, my_videos | length, 4) -%}
-        <div class="row margin">
-            
-            <div class="col s10 offset-s1 xl8 offset-xl2">
-                <!-- https://codepen.io/gaeowyn/pen/oiyHF -->
-                <div class=" video-row">
-                    <ul>
-                        {% for ind in range(my_videos | length) %}
-                            {% if loop.index > num and ind < (num + 4) %}
-                            <li class="video">
-                                <div class="grey darken-4 white-text video-label">
-                                    <h6>{{ my_videos[ind].video_name }}</h6>
-                                    <div class="extra-bold category-name">
-                                        {{ my_videos[ind].category_name }}
-                                    </div>
-                                    <div class="description-trigger">
-                                        <a href="{{ url_for('edit_video', video_id=my_videos[ind]._id)}}" class="grey edit grey darken-2">Edit</a>
-                                        <!-- Delete Modal Trigger -->
-                                        <a href="#delete-modal{{loop.index}}" class="grey edit grey darken-2 modal-trigger">Delete</a>
-
-                                        <a href="#" class="video-controls" id="{{ loop.index + num }}">Show video
-                                            controls</a>
-                                        <a href="#" class="learn-more-link tooltipped"  data-position="right" data-tooltip="Learn more"><i class="tiny material-icons">info_outline</i></a>
-                                        <p class="learn-more white-text">
-                                            {% if my_videos[ind].video_description | length > 0 %}
-                                                {{ my_videos[ind].video_description }}<br>
-                                                <br>
-                                            {% endif %}
-                                            Credit: {{ my_videos[ind].video_credit }}<br>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <em class="learn-more-link">Added by: {{ my_videos[ind].added_by }}</em>
-                                        </p>
-                                        
-                                    </div>
-                                </div>
-                                
-                                <iframe src="{{my_videos[ind].video_embed_url}}?color=00ef93&title=0&byline=0&portrait=0?api=1&autoplay=0&transparent=0&controls=0"
-                                    id="player{{ loop.index + num}}" class="video-frame" type="text/html" frameborder="0"
-                                    allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen
-                                    allowfullscreen></iframe>
-                            </li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-    {%- endfor -%}
-</section>  
+      
 
 {% endblock %}
