@@ -77,7 +77,7 @@
             <span class="card-title grey-text text-darken-4">
                 <i class="material-icons right white-text">close</i>
             </span>
-            <section id="video-gallery">
+            <section id="catergory-video-gallery">
                 {%- for num in range(0, videos | length, 5) -%}
                 <div class="row">
                     <div class="col s12 " id="category-videos">
@@ -96,9 +96,9 @@
                                 {% for category_video in category_videos %}
                                             <li class="video">
                                                 <iframe
-                                                    src="{{category_video.video_embed_url}}?api=1&autoplay=0&transparent=0&controls=0"
+                                                    src="{{category_video.video_embed_url}}?api=1&transparent=0&controls=0"
                                                     id="player{{ loop.index + num}}" type="text/html" frameborder="0"
-                                                    allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen
+                                                    allow="fullscreen; picture-in-picture" webkitallowfullscreen
                                                     mozallowfullscreen allowfullscreen></iframe>
                                             </li>
                                 {% endfor %}

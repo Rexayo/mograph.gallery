@@ -170,3 +170,40 @@
 </div>
 {% endif %}
 {%- endblock -%}
+<!-- Footer starts here -->
+  <footer class="page-footer margin grey darken-4 grey-text">
+            <div class="row">
+              <div class="col s10 offset-s1  xl4 offset-xl2">
+                <h5 class=" extra-bold grey-text">mograph<span class="logo-dot">.</span>gallery</h5>
+                <p class="white-text text-lighten-4 regular">If you have questions, comments, or suggestions, we would love to hear from you.</p>
+                <a class="extra-bold" href="mailto:info@mograph.gallery" target="_blank"><i class="material-icons">mail_outline</i> Drop us a message.</a>
+              </div>
+              
+              <div class="col s10 offset-s1  xl4 offset-xl2">
+                <h5 class="grey-text regular">Links</h5>
+                <ul class="extra-bold">
+                 {% if session.user %}
+                            {% if session.user | lower == "admin" | lower %}
+                                <li><a href="{{ url_for('get_categories')}}">Manage Categories</a></li>
+                            {% else %}
+                                <li><a href="{{ url_for('get_categories')}}">Explore Categories</a></li>
+                            {% endif%}
+                            <li>
+                                <!-- Modal Trigger -->
+                                <a class="modal-trigger" href="#uploadModal">Info</a></li>
+                            <li><a href="{{ url_for('add_video')}}">Add a Video</a></li>
+                            <li><a href="{{ url_for('profile', username=session['user'])}}">Profile</a></li>  
+                            <li><a href="{{ url_for('logout')}}">Log out</a></li>
+                        {% else %}
+                            <li><a href="{{ url_for('get_categories')}}">Explore Categories</a></li>
+                            <li><a href="{{ url_for('signup')}}">Sign up</a></li>
+                            <li><a href="{{ url_for('login')}}">Log in</a></li>
+                        {% endif %}
+                </ul>
+              </div>
+            </div>
+          <div class="footer-copyright row grey-text">
+            <div class="light col s10 offset-s1  xl8 offset-xl2">Copyright © 2021 mograph.gallery. All rights reserved.</div>     
+            </div>
+        </footer>
+    <!-- Footer ends here -->

@@ -47,6 +47,7 @@
     </div>
     </div>
 </section>
+<!-- For screens below 992px -->
 <section id="video-gallery-1">
     {% for num in range(0, my_videos | length, 1) %}
         <div class="row margin">
@@ -98,7 +99,8 @@
         </div>
 
     {% endfor %}
-</section>    
+</section>  
+<!-- For screens between 992px and 1200px -->  
 <section id="video-gallery-2">
     {% for num in range(0, my_videos | length, 2) %}
         <div class="row margin">
@@ -150,7 +152,8 @@
         </div>
 
     {% endfor %}
-</section>    
+</section>
+<!-- For screens above 1200px -->    
 <section id="video-gallery">
     {% for num in range(0, my_videos | length, 4) %}
         <div class="row margin">
