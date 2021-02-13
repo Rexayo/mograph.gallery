@@ -41,7 +41,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix yellow-text">border_color</i>
-                        <input id="video_name" name="video_name" minlength="5" maxlength="40"  type="text"
+                        <input id="video_name" name="video_name" minlength="5" maxlength="30"  type="text"
                             value="{{- video.video_name -}}" class="validate white-text" required>
                         <label for="video_name">Name</label>
                     </div>
@@ -51,7 +51,7 @@
                     <div class="input-field col s12 ">
                         <i class="material-icons prefix yellow-text">comment</i>
                         <textarea id="video_description" name="video_description" minlength="5" maxlength="700" 
-                         class="validate white-text materialize-textarea" ><pre>{{- video.video_description -}}</textarea>
+                         class="validate white-text materialize-textarea" >{{- video.video_description -}}</textarea>
                         <label for="video_description">Description</label>
                     </div>
                 </div>

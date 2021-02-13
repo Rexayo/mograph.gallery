@@ -41,7 +41,7 @@
     </div>
 {% endif%}
 </div>
-<div class="row margin">
+<div class="row margin" >
     {% for category in categories %}
     {% set category_videos = [] %}
     <section>
@@ -61,7 +61,22 @@
         </div>
     </section>
     
-    <div class="card col s10 offset-s1 xl8 offset-xl2 grey  darken-4 waves-effect waves-block">
+    <div class="card col s10 offset-s1 xl8 offset-xl2 grey  darken-4 waves-effect waves-block" id="category-section-small">
+        <div class="card-content activator">
+            <a href="{{ url_for('open_category', category_name=category.category_name)}}"><i class="large activator material-icons white-text">folder_open</i></a>
+            {% if session.user | lower == "admin" | lower %}
+            <a href="#delete-modal{{loop.index}}" class="grey edit grey darken-2 modal-trigger right">Delete</a>
+            <a href="{{ url_for('edit_category', category_id=category._id)}}"
+                class="grey edit grey darken-2 right">Edit</a>
+            {% endif%}
+            
+            <span class="card-title white-text extra-bold">{{ category.category_name }}</span>
+            
+
+
+        </div>
+    </div>
+    <div class="card col s10 offset-s1 xl8 offset-xl2 grey  darken-4 waves-effect waves-block"  id="category-section">
         <div class="card-content activator">
             <i class="large activator material-icons white-text">folder_open</i>
             {% if session.user | lower == "admin" | lower %}
@@ -77,7 +92,7 @@
             <span class="card-title grey-text text-darken-4">
                 <i class="material-icons right white-text">close</i>
             </span>
-            <section id="catergory-video-gallery">
+            <section id="category-video-gallery">
                 {%- for num in range(0, videos | length, 5) -%}
                 <div class="row">
                     <div class="col s12 " id="category-videos">

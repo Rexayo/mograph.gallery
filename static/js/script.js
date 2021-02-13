@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    
+
     $('.sidenav').sidenav({ edge: "right" });
     $('.modal').modal();
     $('.tooltipped').tooltip();
@@ -110,9 +110,6 @@ $(document).ready(function () {
                     );
                 }
 
-
-
-
             });
 
         } else {
@@ -179,9 +176,18 @@ $(document).ready(function () {
             $("#base-footer").remove();
         }
     }
-    
 
-    
+    // bug fix for materialize select validation on mobile phones
+    $("#add-video-modal-footer").on("click", function () {
+        $('#category_name').css('display', 'block');
+
+        $('#add-video-modal-footer').mouseleave(function () {
+            $('#category_name').css('display', 'none');
+        });
+
+    });
+
+
 });
 
 

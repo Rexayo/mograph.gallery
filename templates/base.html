@@ -26,22 +26,25 @@
         <nav class="black">
             <div class="row">
                 <div class="nav-wrapper col s10 offset-s1  xl8 offset-xl2 margin">
-                    <a href="{{ url_for('get_videos')}}" class="brand-logo extra-bold left bigScreen" id="logo">mograph<span class="logo-dot">.</span>gallery</a>
+                    <a href="{{ url_for('get_videos')}}" class="brand-logo extra-bold left" id="logo">mograph<span class="logo-dot">.</span>gallery</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
+                        <li>
+                                <!-- Modal Trigger -->
+                                <a class="modal-trigger" href="#uploadModal">Info</a></li>
                         {% if session.user %}
                             {% if session.user | lower == "admin" | lower %}
                                 <li><a href="{{ url_for('get_categories')}}">Manage Categories</a></li>
                             {% else %}
                                 <li><a href="{{ url_for('get_categories')}}">Explore Categories</a></li>
                             {% endif%}
-                            <li>
-                                <!-- Modal Trigger -->
-                                <a class="modal-trigger" href="#uploadModal">Info</a></li>
                             <li><a href="{{ url_for('add_video')}}">Add a Video</a></li>
                             <li><a href="{{ url_for('profile', username=session['user'])}}">Profile</a></li>  
                             <li><a href="{{ url_for('logout')}}">Log out</a></li>
                         {% else %}
+                            <li>
+                                <!-- Modal Trigger -->
+                                <a class="modal-trigger" href="#uploadModal">Info</a></li
                             <li><a href="{{ url_for('get_categories')}}">Explore Categories</a></li>
                             <li><a href="{{ url_for('signup')}}">Sign up</a></li>
                             <li><a href="{{ url_for('login')}}">Log in</a></li>
@@ -74,15 +77,16 @@
         <!-- mobile sidenav -->
         <ul class="sidenav margin" id="mobile-demo">
             <li><a href="{{ url_for('get_videos')}}">Home</a></li>
+            <li>
+                                <!-- Modal Trigger -->
+                                <a class="modal-trigger" href="#uploadModal">Info</a></li>
             {% if session.user %} 
                 {% if session.user | lower == "admin" | lower %}
                     <li><a href="{{ url_for('get_categories')}}">Manage Categories</a></li>
                 {% else %}
                     <li><a href="{{ url_for('get_categories')}}">Explore Categories</a></li>
                 {% endif%}
-                <li>
-                                <!-- Modal Trigger -->
-                                <a class="modal-trigger" href="#uploadModal">Info</a></li>
+                
                 <li><a href="{{ url_for('add_video')}}">Add a Video</a></li>
                 <li><a href="{{ url_for('profile', username=session['user'])}}">Profile</a></li>
                 <li><a href="{{ url_for('logout')}}">Log out</a></li>
