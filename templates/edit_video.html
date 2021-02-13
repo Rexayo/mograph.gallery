@@ -1,96 +1,95 @@
 {% include "profile.html" %}
 {% block content%}
-
 <!-- Modal Structure -->
-    <form id="add-video-modal" class="modal s12 m2 offset-m5" method="POST" action="{{ url_for('edit_video', video_id=video._id)}}">
-        <div class="modal-content grey darken-4">
-            <div class="row center-align"><a href="{{ url_for('get_videos')}}"
-                    class="brand-logo extra-bold center-align white-text" id="modal-header">mograph<span
-                        class="logo-dot">.</span>gallery</a></div>
-            <div class="row white-text center-align extra-bold" id="modal-tagline">Edit Video</div>
-            <section>
-                <!-- flash messages -->
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        {% for message in messages%}
-                            <div class="row flashes">
-                                <h6 class="center-align yellow-text">{{ message }}</h6>
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-            </section>
-            <div class="video-info">
-                <!-- video-category-selection -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <select id="category_name" name="category_name" class="validate" required>
-                            <option value="" disabled >Click to choose</option>
-                            {% for category in categories %}
+<form id="add-video-modal" class="modal s12 m2 offset-m5" method="POST"
+    action="{{ url_for('edit_video', video_id=video._id)}}">
+    <div class="modal-content grey darken-4">
+        <div class="row center-align"><a href="{{ url_for('get_videos')}}"
+                class="brand-logo extra-bold center-align white-text" id="modal-header">mograph<span
+                    class="logo-dot">.</span>gallery</a></div>
+        <div class="row white-text center-align extra-bold" id="modal-tagline">Edit Video</div>
+        <section>
+            <!-- flash messages -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages%}
+                    <div class="row flashes">
+                        <h6 class="center-align yellow-text">{{ message }}</h6>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </section>
+        <div class="video-info">
+            <!-- video-category-selection -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <select id="category_name" name="category_name" class="validate" required>
+                        <option value="" disabled>Click to choose</option>
+                        {% for category in categories %}
                             {% if category.category_name == video.category_name%}
                             <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
                             {% else %}
                             <option value="{{ category.category_name }}">{{ category.category_name }}</option>
                             {% endif %}
-                            {% endfor %}
-                        </select>
-                        <label for="category_name">Select Category</label>
-                    </div>
-                </div>
-                <!-- video-name -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix yellow-text">border_color</i>
-                        <input id="video_name" name="video_name" minlength="5" maxlength="30"  type="text"
-                            value="{{- video.video_name -}}" class="validate white-text" required>
-                        <label for="video_name">Name</label>
-                    </div>
-                </div>
-                <!-- video-description -->
-                <div class="row">
-                    <div class="input-field col s12 ">
-                        <i class="material-icons prefix yellow-text">comment</i>
-                        <textarea id="video_description" name="video_description" minlength="5" maxlength="700" 
-                         class="validate white-text materialize-textarea" >{{- video.video_description -}}</textarea>
-                        <label for="video_description">Description</label>
-                    </div>
-                </div>
-                <!-- video-embed-url -->
-                <div class="row">
-                    <div class="input-field col s12 ">
-                        <i class="material-icons prefix yellow-text">language</i>
-                        <input id="video_embed_url" name="video_embed_url" minlength="5" maxlength="500" type="text"
-                           value="{{- video.video_embed_url -}}" class="validate white-text" required>
-                        <label for="video_embed_url">Paste embed url</label>
-                    </div>
-                </div>
-                <!-- video-credit -->
-                <div class="row">
-                    <div class="input-field col s12 ">
-                        <i class="material-icons prefix yellow-text">movie_creation</i>
-                        <textarea id="video_credit" name="video_credit" minlength="5" maxlength="300" 
-                           class="validate white-text materialize-textarea" required>{{video.video_credit}}</textarea>
-                        <label for="video_credit">Credit</label>
-                    </div>
-                </div>
-                 <!-- tags -->
-                <div class="row">
-                    <div class="input-field col s12 ">
-                        <i class="material-icons prefix yellow-text">label</i>
-                        <input id="tags" name="tags" minlength="5" maxlength="300" type="text"
-                            value="{{- video.tags -}}" class="validate white-text">
-                        <label for="tags">Tags</label>
-                    </div>
+                        {% endfor %}
+                    </select>
+                    <label for="category_name">Select Category</label>
                 </div>
             </div>
-            <!-- log in -->
-            <div class="row center-align grey darken-4 add-video-modal-footerr">
-                <button type="submit"  id="add-video-modal-footer" class=" waves-effect waves-green btn s3 offset-s2 col extra-bold">Save changes</button>
-                <a href="{{ url_for('profile', username=session['user'])}}" class=" waves-effect waves-green btn s3 offset-s2 col extra-bold">Cancel</a>
+            <!-- video-name -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix yellow-text">border_color</i>
+                    <input id="video_name" name="video_name" minlength="5" maxlength="30" type="text"
+                        value="{{- video.video_name -}}" class="validate white-text" required>
+                    <label for="video_name">Name</label>
+                </div>
             </div>
-            
+            <!-- video-description -->
+            <div class="row">
+                <div class="input-field col s12 ">
+                    <i class="material-icons prefix yellow-text">comment</i>
+                    <textarea id="video_description" name="video_description" minlength="5" maxlength="700"
+                        class="validate white-text materialize-textarea">{{- video.video_description -}}</textarea>
+                    <label for="video_description">Description</label>
+                </div>
+            </div>
+            <!-- video-embed-url -->
+            <div class="row">
+                <div class="input-field col s12 ">
+                    <i class="material-icons prefix yellow-text">language</i>
+                    <input id="video_embed_url" name="video_embed_url" minlength="5" maxlength="500" type="text"
+                        value="{{- video.video_embed_url -}}" class="validate white-text" required>
+                    <label for="video_embed_url">Paste embed url</label>
+                </div>
+            </div>
+            <!-- video-credit -->
+            <div class="row">
+                <div class="input-field col s12 ">
+                    <i class="material-icons prefix yellow-text">movie_creation</i>
+                    <textarea id="video_credit" name="video_credit" minlength="5" maxlength="300"
+                        class="validate white-text materialize-textarea" required>{{video.video_credit}}</textarea>
+                    <label for="video_credit">Credit</label>
+                </div>
+            </div>
+            <!-- tags -->
+            <div class="row">
+                <div class="input-field col s12 ">
+                    <i class="material-icons prefix yellow-text">label</i>
+                    <input id="tags" name="tags" minlength="5" maxlength="300" type="text" value="{{- video.tags -}}"
+                        class="validate white-text">
+                    <label for="tags">Tags</label>
+                </div>
+            </div>
         </div>
-            
-    </form>
-
+        <!-- log in -->
+        <div class="row center-align grey darken-4 add-video-modal-footerr">
+            <button type="submit" id="add-video-modal-footer"
+                class=" waves-effect waves-green btn s3 offset-s2 col extra-bold">Save changes</button>
+            <a href="{{ url_for('profile', username=session['user'])}}"
+                class=" waves-effect waves-green btn s3 offset-s2 col extra-bold">Cancel</a>
+        </div>
+    </div>
+</form>
 {% endblock %}

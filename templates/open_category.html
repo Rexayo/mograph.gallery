@@ -1,190 +1,185 @@
 {% extends "base.html" %}
 {% block content%}
-{% if session.user %}
-    <section>
-        <!-- flash messages -->
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages%}
+    {% if session.user %}
+        <section>
+            <!-- flash messages -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages%}
                     <div class="row flashes">
                         <h4 class="center-align white-text">{{ message }}</h4>
                     </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-    </section>
-{% endif %}
-{% if category_videos | length > 0 %}
-
-<div class="nav">
-<div class="row margin nav-wrapper">
-      <div class="col s10 offset-s1 xl8 offset-xl2">
-        <a href="{{ url_for('get_categories')}}" class="breadcrumb-link">Explore Categories</a>
-        <i class="material-icons chevron white-text">chevron_right</i>
-        <a href="#" class="breadcrumb-active" >{{ category_videos[0].category_name }}</a>
-      </div>
-</div>
-</div>
- <section>
-    <div class="row">
-    <div class="col s10 offset-s1 xl8 offset-xl2">
-        <div class="page-header">
-            {{ category_videos[0].category_name }}
-        </div>
-    </div>
-    </div>
-</section>
-<!-- For screens below 992px -->
-<section id="video-gallery-1">
-    {%- for num in range(0, category_videos | length, 1) -%}
-        <div class="row margin">
-            
-            <div class="col s10 offset-s1 xl8 offset-xl2">
-                <!-- https://codepen.io/gaeowyn/pen/oiyHF -->
-                <div class=" video-row">
-                    <ul>
-                        {% for ind in range(category_videos | length) %}
-                            {% if loop.index > num and ind < (num + 1) %}
-                            <li class="video">
-                                <div class="grey darken-4 white-text video-label">
-                                    <h6>{{ category_videos[ind].video_name }}</h6>
-                                    <div class="extra-bold category-name">
-                                        {{ category_videos[ind].category_name }}
-                                    </div>
-                                    <div class="description-trigger">
-                                         <a href="#" class="learn-more-link"><i class="tiny material-icons">info_outline</i><span>Learn more</span></a>
-                                        <p class="learn-more white-text">
-                                            {% if category_videos[ind].video_description | length > 0 %}
-                                                {{ category_videos[ind].video_description }}<br>
-                                                <br>
-                                            {% endif %}
-                                            Credit: {{ category_videos[ind].video_credit }}<br>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <em class="learn-more-link">Added by: {{ category_videos[ind].added_by }}</em>
-                                        </p>
-                                        
-                                    </div>
-                                </div>
-                                
-                                <iframe src="{{category_videos[ind].video_embed_url}}?api=1&autoplay=0&transparent=0&controls=1&title=0%portrait=0&byline=0"
-                                    id="playerC{{ loop.index + num}}" class="video-frame" type="text/html" frameborder="0"
-                                    allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen
-                                    allowfullscreen></iframe>
-                            </li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </section>
+    {% endif %}
+    {% if category_videos | length > 0 %}
+        <div class="nav">
+            <div class="row margin nav-wrapper">
+                <div class="col s10 offset-s1 xl8 offset-xl2">
+                    <a href="{{ url_for('get_categories')}}" class="breadcrumb-link">Explore Categories</a>
+                    <i class="material-icons chevron white-text">chevron_right</i>
+                    <a href="#" class="breadcrumb-active">{{ category_videos[0].category_name }}</a>
                 </div>
             </div>
         </div>
-
-    {%- endfor -%}
-</section>    
-<!-- For screens between 992px and 1200px -->
-<section id="video-gallery-2">
-    {%- for num in range(0, category_videos | length, 2) -%}
-        <div class="row margin">
-            
-            <div class="col s10 offset-s1 xl8 offset-xl2">
-                <!-- https://codepen.io/gaeowyn/pen/oiyHF -->
-                <div class=" video-row">
-                    <ul>
-                        {% for ind in range(category_videos | length) %}
-                            {% if loop.index > num and ind < (num + 2) %}
-                            <li class="video">
-                                <div class="grey darken-4 white-text video-label">
-                                    <h6>{{ category_videos[ind].video_name }}</h6>
-                                    <div class="extra-bold category-name">
-                                        {{ category_videos[ind].category_name }}
-                                    </div>
-                                    <div class="description-trigger">
-                                         <a href="#" class="learn-more-link"><i class="tiny material-icons">info_outline</i><span>Learn more</span></a>
-                                        <p class="learn-more white-text">
-                                            {% if category_videos[ind].video_description | length > 0 %}
-                                                {{ category_videos[ind].video_description }}<br>
-                                                <br>
-                                            {% endif %}
-                                            Credit: {{ category_videos[ind].video_credit }}<br>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <em class="learn-more-link">Added by: {{ category_videos[ind].added_by }}</em>
-                                        </p>
-                                        
-                                    </div>
-                                </div>
-                                
-                                <iframe src="{{category_videos[ind].video_embed_url}}?api=1&autoplay=0&transparent=0&controls=1&title=0%portrait=0&byline=0"
-                                    id="playerB{{ loop.index + num}}" class="video-frame" type="text/html" frameborder="0"
-                                    allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen
-                                    allowfullscreen></iframe>
-                            </li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
+        <section>
+            <div class="row">
+                <div class="col s10 offset-s1 xl8 offset-xl2">
+                    <div class="page-header">
+                        {{ category_videos[0].category_name }}
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+        <!-- For screens below 992px -->
+        <section id="video-gallery-1">
+            {%- for num in range(0, category_videos | length, 1) -%}
+                <div class="row margin">
+                    <div class="col s10 offset-s1 xl8 offset-xl2">
+                        <!-- https://codepen.io/gaeowyn/pen/oiyHF -->
+                        <div class=" video-row">
+                            <ul>
+                                {% for ind in range(category_videos | length) %}
+                                    {% if loop.index > num and ind < (num + 1) %}
+                                    <li class="video">
+                                        <div class="grey darken-4 white-text video-label">
+                                            <h6>{{ category_videos[ind].video_name }}</h6>
+                                            <div class="extra-bold category-name">
+                                                {{ category_videos[ind].category_name }}
+                                            </div>
+                                            <div class="description-trigger">
+                                                <a href="#" class="learn-more-link"><i
+                                                        class="tiny material-icons">info_outline</i><span>Learn more</span></a>
+                                                <p class="learn-more white-text">
+                                                    {% if category_videos[ind].video_description | length > 0 %}
+                                                    {{ category_videos[ind].video_description }}<br>
+                                                    <br>
+                                                    {% endif %}
+                                                    Credit: {{ category_videos[ind].video_credit }}<br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <em class="learn-more-link">Added by: {{ category_videos[ind].added_by }}</em>
+                                                </p>
 
-    {%- endfor -%}
-</section>    
-<!-- For screens above 1200px -->
-<section id="video-gallery">
-    {%- for num in range(0, category_videos | length, 4) -%}
-        <div class="row margin">
-            
-            <div class="col s10 offset-s1 xl8 offset-xl2">
-                <!-- https://codepen.io/gaeowyn/pen/oiyHF -->
-                <div class=" video-row">
-                    <ul>
-                        {% for ind in range(category_videos | length) %}
-                            {% if loop.index > num and ind < (num + 4) %}
-                            <li class="video">
-                                <div class="grey darken-4 white-text video-label">
-                                    <h6>{{ category_videos[ind].video_name }}</h6>
-                                    <div class="extra-bold category-name">
-                                        {{ category_videos[ind].category_name }}
-                                    </div>
-                                    <div class="description-trigger">
-                                      
+                                            </div>
+                                        </div>
+                                        <iframe
+                                            src="{{category_videos[ind].video_embed_url}}?api=1&autoplay=0&transparent=0&controls=1&title=0%portrait=0&byline=0"
+                                            id="playerC{{ loop.index + num}}" class="video-frame" type="text/html" frameborder="0"
+                                            allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen
+                                            allowfullscreen></iframe>
+                                    </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {%- endfor -%}
+        </section>
+        <!-- For screens between 992px and 1200px -->
+        <section id="video-gallery-2">
+            {%- for num in range(0, category_videos | length, 2) -%}
+                <div class="row margin">
+                    <div class="col s10 offset-s1 xl8 offset-xl2">
+                        <!-- https://codepen.io/gaeowyn/pen/oiyHF -->
+                        <div class=" video-row">
+                            <ul>
+                                {% for ind in range(category_videos | length) %}
+                                    {% if loop.index > num and ind < (num + 2) %}
+                                    <li class="video">
+                                        <div class="grey darken-4 white-text video-label">
+                                            <h6>{{ category_videos[ind].video_name }}</h6>
+                                            <div class="extra-bold category-name">
+                                                {{ category_videos[ind].category_name }}
+                                            </div>
+                                            <div class="description-trigger">
+                                                <a href="#" class="learn-more-link"><i
+                                                        class="tiny material-icons">info_outline</i><span>Learn more</span></a>
+                                                <p class="learn-more white-text">
+                                                    {% if category_videos[ind].video_description | length > 0 %}
+                                                    {{ category_videos[ind].video_description }}<br>
+                                                    <br>
+                                                    {% endif %}
+                                                    Credit: {{ category_videos[ind].video_credit }}<br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <em class="learn-more-link">Added by: {{ category_videos[ind].added_by }}</em>
+                                                </p>
 
-                                        <a href="#" class="video-controls" id="{{ loop.index + num }}">Show video
-                                            controls</a>
-                                        <a href="#" class="learn-more-link tooltipped"  data-position="right" data-tooltip="Click to learn more"><i class="tiny material-icons">info_outline</i></a>
-                                        <p class="learn-more white-text">
-                                            {% if category_videos[ind].video_description | length > 0 %}
+                                            </div>
+                                        </div>
+                                        <iframe
+                                            src="{{category_videos[ind].video_embed_url}}?api=1&autoplay=0&transparent=0&controls=1&title=0%portrait=0&byline=0"
+                                            id="playerB{{ loop.index + num}}" class="video-frame" type="text/html" frameborder="0"
+                                            allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen
+                                            allowfullscreen></iframe>
+                                    </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {%- endfor -%}
+        </section>
+        <!-- For screens above 1200px -->
+        <section id="video-gallery">
+            {%- for num in range(0, category_videos | length, 4) -%}
+            <div class="row margin">
+                <div class="col s10 offset-s1 xl8 offset-xl2">
+                    <!-- https://codepen.io/gaeowyn/pen/oiyHF -->
+                    <div class=" video-row">
+                        <ul>
+                            {% for ind in range(category_videos | length) %}
+                                {% if loop.index > num and ind < (num + 4) %}
+                                <li class="video">
+                                    <div class="grey darken-4 white-text video-label">
+                                        <h6>{{ category_videos[ind].video_name }}</h6>
+                                        <div class="extra-bold category-name">
+                                            {{ category_videos[ind].category_name }}
+                                        </div>
+                                        <div class="description-trigger">
+
+
+                                            <a href="#" class="video-controls" id="{{ loop.index + num }}">Show video
+                                                controls</a>
+                                            <a href="#" class="learn-more-link tooltipped" data-position="right"
+                                                data-tooltip="Click to learn more"><i
+                                                    class="tiny material-icons">info_outline</i></a>
+                                            <p class="learn-more white-text">
+                                                {% if category_videos[ind].video_description | length > 0 %}
                                                 {{ category_videos[ind].video_description }}<br>
                                                 <br>
-                                            {% endif %}
-                                            Credit: {{ category_videos[ind].video_credit }}<br>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <em class="learn-more-link">Added by: {{ category_videos[ind].added_by }}</em>
-                                        </p>
-                                        
+                                                {% endif %}
+                                                Credit: {{ category_videos[ind].video_credit }}<br>
+                                                <br>
+                                                <br>
+                                                <br>
+                                                <br>
+                                                <em class="learn-more-link">Added by: {{ category_videos[ind].added_by }}</em>
+                                            </p>
+
+                                        </div>
                                     </div>
-                                </div>
-                                
-                                <iframe src="{{category_videos[ind].video_embed_url}}?api=1&autoplay=0&transparent=0&controls=0"
-                                    id="player{{ loop.index + num}}" class="video-frame" type="text/html" frameborder="0"
-                                    allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen
-                                    allowfullscreen></iframe>
-                            </li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
+                                    <iframe src="{{category_videos[ind].video_embed_url}}?api=1&autoplay=0&transparent=0&controls=0"
+                                        id="player{{ loop.index + num}}" class="video-frame" type="text/html" frameborder="0"
+                                        allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen
+                                        allowfullscreen></iframe>
+                                </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-
-    {%- endfor -%}
-</section>    
-
-{% endif %}
+            {%- endfor -%}
+        </section>
+    {% endif %}
 {% endblock %}

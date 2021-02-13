@@ -1,31 +1,30 @@
 {% extends "base.html" %}
 {% block content%}
-{% if session.user %}
-<section>
-    <!-- flash messages -->
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages%}
+    {% if session.user %}
+    <section>
+        <!-- flash messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages%}
                 <div class="row flashes">
                     <h4 class="center-align white-text">{{ message }}</h4>
                 </div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-</section>
-{% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
+    {% endif %}
 <section>
     <div class="row margin">
         <div class="col s10 offset-s1 xl8 offset-xl2">
-                         
-            {% if session.user | lower == "admin" | lower %}             
-                <div class="page-header">
-                    Manage Categories
-                </div>
+            {% if session.user | lower == "admin" | lower %}
+            <div class="page-header">
+                Manage Categories
+            </div>
             {% else %}
-                <div class="page-header">
-                    Explore Categories
-                </div>
+            <div class="page-header">
+                Explore Categories
+            </div>
             {% endif%}
             <div class="page-description">
                 Curated collections by our editors
@@ -33,98 +32,94 @@
         </div>
     </div>
 </section>
-{% if session.user | lower == "admin" | lower %}  
-<div class="row margin">
-    <div class="col s10 offset-s1 xl8 offset-xl2">
-        <span class="add-category"><a href="{{ url_for('add_category')}}"><i
-                    class="material-icons large new-folder">create_new_folder</i>Add a Category</a></span>
+    {% if session.user | lower == "admin" | lower %}
+    <div class="row margin">
+        <div class="col s10 offset-s1 xl8 offset-xl2">
+            <span class="add-category"><a href="{{ url_for('add_category')}}"><i
+                        class="material-icons large new-folder">create_new_folder</i>Add a Category</a></span>
+        </div>
     </div>
-{% endif%}
-</div>
-<div class="row margin" >
+    {% endif %}
+<div class="row margin">
     {% for category in categories %}
     {% set category_videos = [] %}
-    <section>
-        <!-- Delete Modal -->
-        <div id="delete-modal{{loop.index}}" class="delete-modal modal grey darken-4 white-text center-align">
-            <div class="modal-content row">
-                <div class="col s12"><i class="material-icons yellow-text">warning</i></div>
-                <h5 class="extra-bold yellow-text"> This action cannot be undone</h5>
-                <p>Are you sure you want to delete this Category?</p>
+        <section>
+            <!-- Delete Modal -->
+            <div id="delete-modal{{loop.index}}" class="delete-modal modal grey darken-4 white-text center-align">
+                <div class="modal-content row">
+                    <div class="col s12"><i class="material-icons yellow-text">warning</i></div>
+                    <h5 class="extra-bold yellow-text"> This action cannot be undone</h5>
+                    <p>Are you sure you want to delete this Category?</p>
+                </div>
+                <div class="grey darken-4 row center-align">
+                    <a href="{{ url_for('get_categories')}}"
+                        class="modal-close waves-effect waves-green btn col extra-bold s3 offset-s2">Cancel</a>
+                    <a href="{{ url_for('delete_category', category_id=category._id)}}"
+                        class="modal-close waves-effect waves-green btn col extra-bold s3 offset-s2">Delete</a>
+                </div>
             </div>
-            <div class="grey darken-4 row center-align">
-                <a href="{{ url_for('get_categories')}}"
-                    class="modal-close waves-effect waves-green btn col extra-bold s3 offset-s2">Cancel</a>
-                <a href="{{ url_for('delete_category', category_id=category._id)}}"
-                    class="modal-close waves-effect waves-green btn col extra-bold s3 offset-s2">Delete</a>
+        </section>
+        <div class="card col s10 offset-s1 xl8 offset-xl2 grey  darken-4 " id="category-section-small">
+            <div class="card-content activator">
+                <a href="{{ url_for('open_category', category_name=category.category_name)}}"><i
+                        class="large material-icons  ">folder_open</i></a>
+                {% if session.user | lower == "admin" | lower %}
+                <a href="#delete-modal{{loop.index}}" class="grey edit grey darken-2 modal-trigger right">Delete</a>
+                <a href="{{ url_for('edit_category', category_id=category._id)}}"
+                    class="grey edit grey darken-2 right">Edit</a>
+                {% endif%}
+                <span class="card-title white-text extra-bold">{{ category.category_name }}</span>
             </div>
         </div>
-    </section>
-    
-    <div class="card col s10 offset-s1 xl8 offset-xl2 grey  darken-4 waves-effect waves-block" id="category-section-small">
-        <div class="card-content activator">
-            <a href="{{ url_for('open_category', category_name=category.category_name)}}"><i class="large activator material-icons white-text">folder_open</i></a>
-            {% if session.user | lower == "admin" | lower %}
-            <a href="#delete-modal{{loop.index}}" class="grey edit grey darken-2 modal-trigger right">Delete</a>
-            <a href="{{ url_for('edit_category', category_id=category._id)}}"
-                class="grey edit grey darken-2 right">Edit</a>
-            {% endif%}
-            
-            <span class="card-title white-text extra-bold">{{ category.category_name }}</span>
-            
+        <div class="card col s10 offset-s1 xl8 offset-xl2 grey  darken-4 waves-effect waves-block" id="category-section">
+            <div class="card-content activator">
+                <i class="large activator material-icons white-text">folder_open</i>
+                {% if session.user | lower == "admin" | lower %}
+                <a href="#delete-modal{{loop.index}}" class="grey edit grey darken-2 modal-trigger right">Delete</a>
+                <a href="{{ url_for('edit_category', category_id=category._id)}}"
+                    class="grey edit grey darken-2 right">Edit</a>
+                {% endif%}
+                <span class="card-title activator white-text extra-bold">{{ category.category_name }}<i
+                        class="material-icons right">more_vert</i></span>
 
+            </div>
+            <div class="card-reveal black darken-4">
+                <span class="card-title grey-text text-darken-4">
+                    <i class="material-icons right white-text">close</i>
+                </span>
+                <section id="category-video-gallery">
+                    {%- for num in range(0, videos | length, 5) -%}
+                    <div class="row">
+                        <div class="col s12 " id="category-videos">
+                            <!-- https://codepen.io/gaeowyn/pen/oiyHF -->
+                            <div class=" video-row">
+                                <ul>
+                                    <a class="open-category"
+                                        href="{{ url_for('open_category', category_name=category.category_name)}}">Open
+                                        Category<i class="material-icons large arrow">arrow_forward</i></a>
 
-        </div>
-    </div>
-    <div class="card col s10 offset-s1 xl8 offset-xl2 grey  darken-4 waves-effect waves-block"  id="category-section">
-        <div class="card-content activator">
-            <i class="large activator material-icons white-text">folder_open</i>
-            {% if session.user | lower == "admin" | lower %}
-            <a href="#delete-modal{{loop.index}}" class="grey edit grey darken-2 modal-trigger right">Delete</a>
-            <a href="{{ url_for('edit_category', category_id=category._id)}}"
-                class="grey edit grey darken-2 right">Edit</a>
-            {% endif%}
-            <span class="card-title activator white-text extra-bold">{{ category.category_name }}<i
-                    class="material-icons right">more_vert</i></span>
-
-        </div>
-        <div class="card-reveal black darken-4">
-            <span class="card-title grey-text text-darken-4">
-                <i class="material-icons right white-text">close</i>
-            </span>
-            <section id="category-video-gallery">
-                {%- for num in range(0, videos | length, 5) -%}
-                <div class="row">
-                    <div class="col s12 " id="category-videos">
-                        <!-- https://codepen.io/gaeowyn/pen/oiyHF -->
-                        <div class=" video-row">
-                            <ul>
-                                <a  class="open-category" href="{{ url_for('open_category', category_name=category.category_name)}}">Open Category<i
-                                            class="material-icons large arrow">arrow_forward</i></a>
-                                
-                                {% for video in videos %}
+                                    {% for video in videos %}
                                     {% if video.category_name == category.category_name %}
-                                        {{ category_videos.append(video) }}
+                                    {{ category_videos.append(video) }}
                                     {% endif %}
-                                   
-                                {% endfor %}
-                                {% for category_video in category_videos %}
-                                            <li class="video">
-                                                <iframe
-                                                    src="{{category_video.video_embed_url}}?api=1&transparent=0&controls=0"
-                                                    id="player{{ loop.index + num}}" type="text/html" frameborder="0"
-                                                    allow="fullscreen; picture-in-picture" webkitallowfullscreen
-                                                    mozallowfullscreen allowfullscreen></iframe>
-                                            </li>
-                                {% endfor %}
-                            </ul>
+
+                                    {% endfor %}
+                                    {% for category_video in category_videos %}
+                                    <li class="video">
+                                        <iframe src="{{category_video.video_embed_url}}?api=1&transparent=0&controls=0"
+                                            id="player{{ loop.index + num}}" type="text/html" frameborder="0"
+                                            allow="fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen
+                                            allowfullscreen></iframe>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                {%- endfor -%}
-            </section>
+                    {%- endfor -%}
+                </section>
+            </div>
         </div>
-    </div>
     {% endfor %}
 </div>
 {% endblock %}

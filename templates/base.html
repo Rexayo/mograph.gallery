@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta name="description"
         content="Discover, curate and be inspired by Motion Graphic Design work from across the web" />
@@ -10,7 +9,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
     <!--materialize-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
@@ -18,78 +16,68 @@
     <link rel="stylesheet" href="{{ url_for( 'static', filename='css/style.css') }}" type="text/css" />
     <title>mograph.gallery</title>
 </head>
-
 <body class="black">
     <header>
         <!-- navbar -->
-        
         <nav class="black">
             <div class="row">
                 <div class="nav-wrapper col s10 offset-s1  xl8 offset-xl2 margin">
-                    <a href="{{ url_for('get_videos')}}" class="brand-logo extra-bold left" id="logo">mograph<span class="logo-dot">.</span>gallery</a>
-                    <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+                    <a href="{{ url_for('get_videos')}}" class="brand-logo extra-bold left" id="logo">mograph<span
+                            class="logo-dot">.</span>gallery</a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i
+                            class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
                         <li>
-                                <!-- Modal Trigger -->
-                                <a class="modal-trigger" href="#uploadModal">Info</a></li>
+                            <!-- Modal Trigger -->
+                            <a class="modal-trigger" href="#uploadModal">Info</a></li>
                         {% if session.user %}
                             {% if session.user | lower == "admin" | lower %}
-                                <li><a href="{{ url_for('get_categories')}}">Manage Categories</a></li>
+                            <li><a href="{{ url_for('get_categories')}}">Manage Categories</a></li>
                             {% else %}
-                                <li><a href="{{ url_for('get_categories')}}">Explore Categories</a></li>
-                            {% endif%}
-                            <li><a href="{{ url_for('add_video')}}">Add a Video</a></li>
-                            <li><a href="{{ url_for('profile', username=session['user'])}}">Profile</a></li>  
-                            <li><a href="{{ url_for('logout')}}">Log out</a></li>
-                        {% else %}
-                            <li>
-                                <!-- Modal Trigger -->
-                                <a class="modal-trigger" href="#uploadModal">Info</a></li
                             <li><a href="{{ url_for('get_categories')}}">Explore Categories</a></li>
-                            <li><a href="{{ url_for('signup')}}">Sign up</a></li>
-                            <li><a href="{{ url_for('login')}}">Log in</a></li>
+                            {% endif%}
+                        <li><a href="{{ url_for('add_video')}}">Add a Video</a></li>
+                        <li><a href="{{ url_for('profile', username=session['user'])}}">Profile</a></li>
+                        <li><a href="{{ url_for('logout')}}">Log out</a></li>
+                        {% else %}
+                        <li><a href="{{ url_for('get_categories')}}">Explore Categories</a></li>
+                        <li><a href="{{ url_for('signup')}}">Sign up</a></li>
+                        <li><a href="{{ url_for('login')}}">Log in</a></li>
                         {% endif %}
                     </ul>
                 </div>
             </div>
-             <a href="#" onclick="topScroll()" id="scroll-to-top">
-          
-          <span><i class="material-icons black-text large">arrow_upward</i></span></a
-        >
+            <a href="#" onclick="topScroll()" id="scroll-to-top">
+                <span><i class="material-icons black-text large">arrow_upward</i></span></a>
         </nav>
-        
-    
         <!-- search bar -->
         <div class="row">
             <div class="nav-wrapper col s10 offset-s1  xl8 offset-xl2 ">
                 <i class="material-icons small yellow-text" id="search-icon">search</i>
-                <form class="margin white-text black" id="search-bar" method="post" action="{{ url_for('search') }}" >
+                <form class="margin white-text black" id="search-bar" method="post" action="{{ url_for('search') }}">
                     <div class="input-field">
-                        
                         <input id="search" type="text" name="search" minlength="3" class="validate" required>
-                        <label for="search" class="grey-text search-label">Search Videos</label>  
-                        
+                        <label for="search" class="grey-text search-label">Search Videos</label>
+
                     </div>
                 </form>
             </div>
         </div>
-    
         <!-- mobile sidenav -->
         <ul class="sidenav margin" id="mobile-demo">
             <li><a href="{{ url_for('get_videos')}}">Home</a></li>
             <li>
-                                <!-- Modal Trigger -->
-                                <a class="modal-trigger" href="#uploadModal">Info</a></li>
-            {% if session.user %} 
+                <!-- Modal Trigger -->
+                <a class="modal-trigger" href="#uploadModal">Info</a></li>
+            {% if session.user %}
                 {% if session.user | lower == "admin" | lower %}
-                    <li><a href="{{ url_for('get_categories')}}">Manage Categories</a></li>
+                <li><a href="{{ url_for('get_categories')}}">Manage Categories</a></li>
                 {% else %}
-                    <li><a href="{{ url_for('get_categories')}}">Explore Categories</a></li>
+                <li><a href="{{ url_for('get_categories')}}">Explore Categories</a></li>
                 {% endif%}
-                
-                <li><a href="{{ url_for('add_video')}}">Add a Video</a></li>
-                <li><a href="{{ url_for('profile', username=session['user'])}}">Profile</a></li>
-                <li><a href="{{ url_for('logout')}}">Log out</a></li>
+            <li><a href="{{ url_for('add_video')}}">Add a Video</a></li>
+            <li><a href="{{ url_for('profile', username=session['user'])}}">Profile</a></li>
+            <li><a href="{{ url_for('logout')}}">Log out</a></li>
             {% else %}
             <li><a href="{{ url_for('get_categories')}}">Explore Categories</a></li>
             <li><a href="{{ url_for('signup')}}">Sign up</a></li>
@@ -106,26 +94,26 @@
                         class="brand-logo extra-bold center-align white-text" id="modal-header">mograph<span
                             class="logo-dot">.</span>gallery</a></div>
                 <div class="row white-text center-align" id="modal-tagline">Tips to get you going</div>
-                
+
                 <div class="row">
                     <ul class="col s10 offset-s1 white-text upload">
                         <li>
                             Create an account and Log in.
-    
                         </li>
                         <li>
                             Click on the <strong>Add a Video</strong> link on the navigation bar.
-    
                         </li>
                         <li>
-                            In the window that shows complete the fields accordingly; <strong> the Name, *Video Embed Url
+                            In the window that shows complete the fields accordingly; <strong> the Name, *Video Embed
+                                Url
                                 and Credit </strong>
                             fields are mandatory.
                         </li>
                         <li>
                             To complete the <strong>Video Emded Url</strong> field, head over to Vimeo and click on the
                             share button below the video you want
-                            to upload. Copy the entire <code>HTML</code> in the <strong> Embed </strong> field, Paste this
+                            to upload. Copy the entire <code>HTML</code> in the <strong> Embed </strong> field, Paste
+                            this
                             into the <strong> Video Embed Url </strong> field back on
                             the website.
                         </li>
@@ -137,58 +125,56 @@
                             the <strong>Edit</strong> button and follow steps 3 and 4 above.
                         </li>
                     </ul>
-                    <h6 class="col s10 offset-s1 white-text footnote">*The gallery currently only supports videos uploaded to Vimeo.
+                    <h6 class="col s10 offset-s1 white-text footnote">*The gallery currently only supports videos
+                        uploaded to Vimeo.
                     </h6>
                 </div>
-                
             </div>
-    
-            
         </div>
     </section>
-    <main>    
-    {% block content %}
-
-    {% endblock %}
+    <main>
+        {% block content %}
+        {% endblock %}
     </main>
-   <!-- Footer starts here -->
-  <footer class="page-footer margin grey darken-4 grey-text">
-            <div class="row">
-              <div class="col s10 offset-s1  xl4 offset-xl2">
+    <!-- Footer starts here -->
+    <footer class="page-footer margin grey darken-4 grey-text">
+        <div class="row">
+            <div class="col s10 offset-s1  xl4 offset-xl2">
                 <h5 class=" extra-bold grey-text">mograph<span class="logo-dot">.</span>gallery</h5>
-                <p class="white-text text-lighten-4 regular">If you have questions, comments, or suggestions, we would love to hear from you.</p>
-                <a class="extra-bold" href="mailto:info@mograph.gallery" target="_blank"><i class="material-icons">mail_outline</i> Drop us a message.</a>
-              </div>
-              
-              <div class="col s10 offset-s1  xl4 offset-xl2">
+                <p class="white-text text-lighten-4 regular">If you have questions, comments, or suggestions, we would
+                    love to hear from you.</p>
+                <a class="extra-bold" href="mailto:info@mograph.gallery" target="_blank"><i
+                        class="material-icons">mail_outline</i> Drop us a message.</a>
+            </div>
+            <div class="col s10 offset-s1  xl4 offset-xl2">
                 <h5 class="grey-text regular">Links</h5>
                 <ul class="extra-bold">
-                 {% if session.user %}
-                            {% if session.user | lower == "admin" | lower %}
-                                <li><a href="{{ url_for('get_categories')}}">Manage Categories</a></li>
-                            {% else %}
-                                <li><a href="{{ url_for('get_categories')}}">Explore Categories</a></li>
-                            {% endif%}
-                            <li>
-                                <!-- Modal Trigger -->
-                                <a class="modal-trigger" href="#uploadModal">Info</a></li>
-                            <li><a href="{{ url_for('add_video')}}">Add a Video</a></li>
-                            <li><a href="{{ url_for('profile', username=session['user'])}}">Profile</a></li>  
-                            <li><a href="{{ url_for('logout')}}">Log out</a></li>
+                    {% if session.user %}
+                        {% if session.user | lower == "admin" | lower %}
+                        <li><a href="{{ url_for('get_categories')}}">Manage Categories</a></li>
                         {% else %}
-                            <li><a href="{{ url_for('get_categories')}}">Explore Categories</a></li>
-                            <li><a href="{{ url_for('signup')}}">Sign up</a></li>
-                            <li><a href="{{ url_for('login')}}">Log in</a></li>
-                        {% endif %}
+                        <li><a href="{{ url_for('get_categories')}}">Explore Categories</a></li>
+                        {% endif%}
+                    <li>
+                        <!-- Modal Trigger -->
+                        <a class="modal-trigger" href="#uploadModal">Info</a></li>
+                    <li><a href="{{ url_for('add_video')}}">Add a Video</a></li>
+                    <li><a href="{{ url_for('profile', username=session['user'])}}">Profile</a></li>
+                    <li><a href="{{ url_for('logout')}}">Log out</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('get_categories')}}">Explore Categories</a></li>
+                    <li><a href="{{ url_for('signup')}}">Sign up</a></li>
+                    <li><a href="{{ url_for('login')}}">Log in</a></li>
+                    {% endif %}
                 </ul>
-              </div>
             </div>
-          <div class="footer-copyright row grey-text">
-            <div class="light col s10 offset-s1  xl8 offset-xl2">Copyright © 2021 mograph.gallery. All rights reserved.</div>     
+        </div>
+        <div class="footer-copyright row grey-text">
+            <div class="light col s10 offset-s1  xl8 offset-xl2">Copyright © 2021 mograph.gallery. All rights reserved.
             </div>
-        </footer>
+        </div>
+    </footer>
     <!-- Footer ends here -->
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://f.vimeocdn.com/js/froogaloop2.min.js"></script>
