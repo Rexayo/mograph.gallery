@@ -1,6 +1,7 @@
-<a href="https://mograph-gallery-project.herokuapp.com/">mograph<span style="color: yellow;">.</span>gallery  </a>
+<h2 align="left"><img src="static/img/logo.png"></h2>
 
 ##### Click logo above to view live project
+
 
 <h2 align="center"><img src="assets/images/Responsive Screenshot.jpg"></h2>
 
@@ -15,12 +16,11 @@ As a motion designer myself, my hope was to make a tool I would be willing to us
 
   - #### First Time Visitor Goals
 
-    a. As a First Time Visitor, I want to easily understand the main purpose of the site and sign up .  
+    a. As a First Time Visitor, I want to easily understand the main purpose of the site and sign up.  
     b. As a First Time Visitor, I want to be able to easily navigate throughout the site to find content.
     c. As a First Time Visitor, I want to easily find details about about how to add a video.
-    d. As a First Time Visitor, I want to be able to measure my progress as I play the game.
-    e. As a First Time Visitor, I want to be able to preview the videos in collections, in order to find specific videos.
-    f. As a First Time Visitor, I want to be able to search through the videos using keywords to parse through the gallery.
+    d. As a First Time Visitor, I want to be able to preview the videos in collections, in order to find specific videos.
+    e. As a First Time Visitor, I want to be able to search through the videos using keywords to parse through the gallery.
 
   - #### Returning Visitor Goals
 
@@ -78,17 +78,16 @@ This how-to section contains a breakdown of steps to take when adding a video to
 
 ### Sign Up 
 
-This link launches a modal with fields to create a  username and  passowrd.
+This link launches a modal with fields to create a username and passowrd.
 
 ### Login
 
-This link launches a modal with fields to enter a  username and  passowrd.
+This link launches a modal with fields to enter in a username and passowrd.
 
 ### Features Left to Implement
 
-- Buttons that provides additional features useful to design such as creating a colour from a set of selected videos.
-- Add an option to shuffle the videos based similar colours. 
-- Add user specific collections, enabling users to create unique  collection of videos which can be help when doing research for specific projects..
+- A buttons that provides a colour palette from the unique to each video. 
+- Add user specific collections, enabling users to create folders of videos unique to their needs, this will be useful for personalized curation.
 
 ## Technologies Used
 
@@ -97,11 +96,7 @@ This link launches a modal with fields to enter a  username and  passowrd.
 - HTML5
 - CSS3
 - jQuery and Javascript
-- Python
-- MongoDB
-- Jinja
-- Flask
-- Froogaloop
+- Python                                b                                                                                                
 
 ### Frameworks, Libraries & Programs Used
 
@@ -120,9 +115,13 @@ This link launches a modal with fields to enter a  username and  passowrd.
 
   - Google fonts were used to import the "Manrope" font into the style.css file which is used across the project.
 
-- [Font Awesome](https://fontawesome.com/)
+- [Python](https://www.python.org/)
 
-  - Font Awesome was used for the light and dark mode toggle icon, the game-pad icon, the how-to-play icon, statistics icon and email icon in the footer. These help to improve User Experience and User Interface design.
+  - Python was used to manage the website's data and enable communication with MongoDB.
+
+- [MongoDB](https://fontawesome.com/)
+
+  - MongoDB was used to provide a database to enable creating, editing, updating and deleting videos.
 
 - [Git](https://git-scm.com/)
 
@@ -131,6 +130,10 @@ This link launches a modal with fields to enter a  username and  passowrd.
 - [GitHub](https://github.com/)
 
   - GitHub is used to store the project's code after being pushed from Git.
+
+- [Heroku](https://www.heroku.com/)
+
+  - Heroku is used to deploy the website.
 
 - [Balsamiq](https://balsamiq.com/)
 
@@ -143,9 +146,8 @@ This link launches a modal with fields to enter a  username and  passowrd.
 
 ## Testing
 
-The W3C Markup Validator and W3C CSS Validator Services were used to validate the index.html page to ensure there were no syntax errors in the project. No errors were found during the validation process, but a few warnings were flagged relating to certain sections not having header tags. These were intentional choices and they don't affect the functionality of the website.
+The W3C CSS Validator Services was used to validate the style.css page to ensure there were no syntax errors in the code. No errors were found during the validation process.
 
-- [W3C Markup Validator](https://validator.w3.org/#validate_by_input)
 - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
 
   <a href="assets/images/Validator Results.zip" download>Download results here</a>
@@ -154,42 +156,43 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate th
 
 - #### First Time Visitor Goals
 
-  1. As a First Time Visitor, I want to easily understand the main purpose of the site and learn more about the game.
+  1. As a First Time Visitor, I want to easily understand the main purpose of the site and sign up.
 
-     - Upon entering the site, users are automatically greeted with a clean and easily readable navigation bar with name of the game.
-     - The game has a one-page layout which enables all the information the user needs to be in one place at a glance.
+     - Upon entering the site, users are automatically greeted with a clean and easily readable navigation bar with the name of the website, which is quite descriptive of its purpose.
+     - The website is optimised for use with larger screens, but also has a well considered mobile version. The animation and previewing options for the videos are specifically tailored for the website's man purpose which is quickly accessing motion design inspiration and content.
+     - There is a link on the navbar to sign up, by creating a unique username and password.
 
   2. As a First Time Visitor, I want to be able to easily navigate throughout the site to find content.
 
-     - The site has been designed to be minimal with little distraction to its main focus which is the colour grid. As a user enters the site, there are no preambles or unnecessary steps before gameplay begins.
+     - The site has been designed to be minimal with little distraction to its main focus which is the gallery. Videos are enabled with an autoplay feature and animation which highlights the currently hovered video. Additionally, the description information about the videos are easily accessible on larger screens in the same way.
 
-  3. As a First Time Visitor, I want to easily find details about the rules of the game.
+  3. As a First Time Visitor, I want to easily find details about about how to add a video.
 
-     - The how-to-play section is right below the colour grid with a detailed explanation of how the game works.
+     - The info link on the navbar provides a list of tips that tell the user how to go about adding a video in easy steps.
 
-  4. As a First Time Visitor, I want to be able to measure my progress as I play the game.
+  4. As a First Time Visitor, I want to be able to preview the videos in collections, in order to find specific videos.
 
-     - Below the how-to-play rules is a breakdown of all the game statistics and how they are calculated.
+     - Beside the Info link is an "Explore Categories" which presents the vidoes on the homepage in a collection of predefined folders that are representative of the major areas of focus of the field of motion graphic design. As user add videos to the site they are automatically collated into these categories for easy curation. 
 
-  5. As a First Time Visitor, I want to be able to adjust the background colour around the colour grid, if my eyes are more sensitive to light.
+  5. As a First Time Visitor, I want to be able to search through the videos using keywords to parse through the gallery.
 
-     - There is light and dark toggle on the navigation bar that helps the user switch the colour grid's background to a dark colour for better contrast with the colours.
+     - There is a search field underneath the navbar, that enables keyword searches which is indexed using the name of each video, its description, name of its creators and the tags that can be provided at the time of upload.  
 
 - #### Returning Visitor Goals
 
-  1. As a Returning Visitor, I want to be able to easily continue the game, whilst keeping track of how well I have done in previous attempts.
+  1. As a Returning Visitor, I want to be able to easily log in after creating an account.
 
-     - The navigation bar has a dropdown menu with all the available difficulty levels. So users can play from whatever level was last played. Alternatively, by default, the game expects users to start from level 1 and work their way up in order to rack up more points and accumulate more clicks for the more difficult levels.
+     - There is a link on the navbar to log in to an existing account, using the login credentials created during signup.
 
-  2. As a Returning Visitor, I want to find the best way to get in contact with the organisation with any questions I may have.
+  2. As a Returning Visitor, I want to be able to easily add a video, with easy steps and fields to help me input relevant information about my video, so others can locate it easily.
 
-     1. On the footer there is a mail icon with a message beside it, letting the user know to send am email when a problem is encountered or for general enquires. This email button on the footer is set up to automatically open up the user's email app and autofill the developer's email address in the "To" section.
+     - There is a link on the navbar to add a video, which launches a modal with a collection of fields to enable the user add information about the video being uploaded.
 
 * #### Frequent User Goals
 
-  1. As a Frequent User, I want to sign up to be made aware of new levels as and when they are added.
+  1. As a Returning Visitor, I want to be able to easily log in after creating an account.
 
-     - There are forms both at the footer of the page and also at the end of level 4, that help the user send a contact email address to receive alerts on the addition of new levels and general gameplay additions.
+     - There is a link on the navbar to log in to an existing account, using the login credentials created during signup.
 
 ### Further Testing
 
@@ -211,11 +214,9 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate th
 
 ### GitHub Pages
 
-Initially, the project was named "Flyp" and I renamed it to "Click Match!" after the repository was created. Github's flexibility enabled me to do this without any loss of data.
+The project was deployed to Heroku using the following steps...
 
-The project was deployed to GitHub Pages using the following steps...
-
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/Rexayo/click-match)
+1. Log in to Heroku and locate the [project](https://github.com/Rexayo/click-match)
 2. At the top of the Repository (not top of page), locate the "Settings" button on the menu.
 3. Scroll down the Settings page until you locate the "GitHub Pages" Section.
 4. Under "Source", click the dropdown called "None" and select "Master Branch".
@@ -254,18 +255,20 @@ Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-re
 
 ### Code
 
-- [Bootstrap](https://getbootstrap.com/docs/4.5/getting-started/introduction/): Bootstrap Library was used throughout the project mainly to make the website responsive using the Bootstrap Grid System.
+- [Materialize](https://materializecss.com/): Bootstrap Library was used throughout the project mainly to make the website responsive using the Bootstrap Grid System.
 
-- [HTML & CSS](https://www.w3schools.com/): I researched a lot of code support from W3 Schools. Additional research on CSS was done on [CSS Tricks](https://css-tricks.com/). Animation on game icon was done with [Hover.css](https://ianlunn.github.io/Hover/). Lastly background-image pattern was done with [Hero patterns](www.heropatterns.com).
+- [HTML & CSS](https://www.w3schools.com/): I researched a lot of code support from W3 Schools. Additional research on CSS was done on [CSS Tricks](https://css-tricks.com/). Base code for gallery layout was gotten from [Code Pen](https://codepen.io/gaeowyn/pen/oiyHF).
 
-- Code Pen - [Random number generator function](https://codepen.io/meowwwls/pen/jbEJRp).
+- [jQuery](https://codeinstitute.net/)-Validation of select fields on forms was done with JQuery code provided by Code Institute.
+
+- Code Pen - Base code for gallery layout was gotten from [Code Pen](https://codepen.io/gaeowyn/pen/oiyHF).
 - Stack Overflow
-  - [Fisher Yates Shuffle used to shuffle Arrays for colour selection](https://stackoverflow.com/questions/2450954/)
-  - [Random colour on each letter of the logo](https://stackoverflow.com/questions/20228961/how-to-make-each-letter-in-text-a-different-random-color-in-javascript).
-- Github - [Generating random HSL colours](https://mika-s.github.io/javascript/colors/hsl/2017/12/05/generating-random-colors-in-javascript.html).
+  - [Scroll to Top](https://stackoverflow.com/questions/2450954/).
+  - [Autocenter active video description](https://stackoverflow.com/questions/20228961/how-to-make-each-letter-in-text-a-different-random-color-in-javascript).
+- Froogaloop - [Event triggering for Vimeo videos](https://stackoverflow.com/questions/35549780/play-vimeo-videos-on-mouse-hover).
 
 ## Credits
 
 ### Acknowledgements
 
-- I received inspiration for this project from a colour recognition game on iOS called [Specimen](https://apps.apple.com/us/app/specimen-a-game-about-color/id999930535) created by Pep Rally. Also, the idea of clicking the boxes to reveal what's behind them comes from [concentration card games](https://en.wikipedia.org/wiki/Concentration_(card_game)#:~:text=Concentration%2C%20also%20known%20as%20Match,over%20pairs%20of%20matching%20cards.) that rely on flipping cards to reveal what's underneath.
+- I received inspiration for this project from a website called [Design Inspiration](https://www.designspiration.com/). Much of functionality is also based on [Pinterest](https://www.pinterest.co.uk/) and [Behance](https://www.behance.net/) with the added bonus being that mogrpah.gallery has features tailored to the niche sector of the motion graphics whilst all the other are catering to a much larger audience.
