@@ -11,7 +11,7 @@ $(document).ready(function () {
     $('select').formSelect();
     // materialize jquery initializations end here
 
-    // scroll to top starts here
+    // scroll to top starts here - https://codepen.io/deveb22/pen/QxPmGz
     $(window).scroll(function () {
         if ($(this).scrollTop() > 50) {
             $("#scroll-to-top").fadeIn("slow");
@@ -95,8 +95,8 @@ $(document).ready(function () {
                     $(this).css('color', '#ffeb3b');
 
                     // smooth scroll to active video description
-                    var padding = 200;
-                    var panel = $(this).next('.learn-more');
+                    let padding = 200;
+                    let panel = $(this).next('.learn-more');
 
                     $("html, body").animate(
                         {
@@ -111,8 +111,8 @@ $(document).ready(function () {
                     $(this).css('color', 'grey');
 
                     // smooth scroll to active video description
-                    var padding = 200;
-                    var panel = $(this);
+                    let padding = 200;
+                    let panel = $(this);
 
                     $("html, body").animate(
                         {
@@ -138,9 +138,9 @@ $(document).ready(function () {
             });
         }
     }
-    var breakPt1 = window.matchMedia("(max-width: 1200px)")
+    var breakPt1 = window.matchMedia("(max-width: 1200px)");
     responsiveGallery(breakPt1);
-    breakPt1.addListener(responsiveGallery)
+    breakPt1.addListener(responsiveGallery);
     // media queries for layout adjustments including smooth scroll to active video description starts here
 
 
@@ -153,8 +153,8 @@ $(document).ready(function () {
             var newSrc = currSrc.replace("&controls=0", "&controls=1");
             $(this).html("Hide video controls");
 
-            var padding = 200;
-            var panel = $(this);
+            let padding = 200;
+            let panel = $(this);
 
             $("html, body").animate(
                 {
@@ -168,8 +168,8 @@ $(document).ready(function () {
             var newSrc = currSrc.replace("&controls=1", "&controls=0");
             $(this).html("Show video controls");
 
-            var padding = 200;
-            var panel = $(this);
+            let padding = 200;
+            let panel = $(this);
 
             $("html, body").animate(
                 {
