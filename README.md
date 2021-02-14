@@ -6,7 +6,7 @@
 
 mograph.gallery is an online collection of motion graphics work. Motion graphics designers or motion designers as they are often called, take pride in showcasing their work online both for inspiration and also as a digital portfolio. Before now websites that served this purpose were either Vimeo(an online video-hub similar to youtube) or Behance(a more specialised portfolio hub for all creative professions). While these are very useful, there has not been a tailored platform for motion graphics work solely. This means an often tedious process is required to search for inspiration or just to see the latest trends available. The current platform for a large collection of motion design work is on Vimeo, but this exists amidst a lot of other videos and parsing through can often be quite time-consuming.
 
-As a motion designer myself, my hope was to make a tool I would be willing to use in my creative process. I built mograph.gallery as a tool that is intended to be part of a daily workflow for motion designers who just want to access curated pieces quickly. Bearing in mind that Vimeo is the current platform where a majority of these videos currently exist. I tailored this website to be currently optimised for videos uploaded to Vimeo with a plan to add additional support in the future.
+As a motion designer myself, my hope was to make a tool I would be willing to use in my creative process. I built mograph.gallery to be part of a daily workflow for motion designers who just want to access curated pieces quickly. Bearing in mind that Vimeo is the current platform where a majority of these videos currently exist. I tailored this website to be currently optimised for videos uploaded to Vimeo with a plan to add additional support in the future. Furthermore with future updates the profile section would include a fully featured bio section where career information for each user would be included. Eventually, users would have a fully functional portfolio that they can present to employers and peers alike.
 
 
 ## User Experience (UX) 
@@ -415,6 +415,7 @@ This link launches a modal with fields to enter in a username and password.
 
 - A button that creates a colour palette from the unique to each video. 
 - Add user-specific collections, enabling users to create folders of videos unique to their needs, this will be useful for personalized curation.
+- More personalized information to the profile page comprising a bio, profile photo and professional details, which will enable the profile section to be used as a fully functional portfolio.
 
 ## Technologies Used
 
