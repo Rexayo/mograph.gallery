@@ -3,7 +3,7 @@
 ##### Click logo above to view live project
 
 
-<h2 align="center"><img src="assets/images/Responsive Screenshot.jpg"></h2>
+<h2 align="center"><img src="static/img/responsive_gallery.jpg"></h2>
 
 mograph.gallery is an online collection of motion graphics work. Motion graphics designers or motion designers as they are often called, take pride in showcasing their work online both for inspiration and also as a digital portfolio. Before now websites that served this purpose were either Vimeo(an online video-hub similar to youtube) or Behance(a more specialised portfolio hub for all creative professions). While these are veru useful, there has not been a tailored platform for motion graphics work solely. This means an often tedious process is required to search for inspiration or just to see the latest trends available. The current platform for a large collection of motion design work is on Vimeo, but this exist amidst a lot of other videos and parsing through can often be quite time consuming.
 
@@ -35,11 +35,10 @@ As a motion designer myself, my hope was to make a tool I would be willing to us
 
   - #### Colour Scheme
 
-    - The colour scheme across the website is a combination of tints of black, white and yellow. The website is designed to be clean and easily present access to preview videos with just a hover as the gallery shuffles fluidly like a pack of cards. With the aid of material design provided with the framework materializecss. I built the website to feel familiar to designers who would appreciated the fluid motion and the subtle use of aesthetic influences from the Windows explorer(the categories section uses familiar icons styles that are reminiscent of the folder icons from Windows 10) and osx(the video preview in the categories section on larger screens). 
-    <img src="assets/images/Design.jpg">
+    - The colour scheme across the website is a combination of black, greys white and yellow. The colours are used from Materialize's colour palette. The website is designed to be clean and easily present access to preview videos with just a hover as the gallery shuffles fluidly like a pack of cards. With the aid of material design provided with the framework materializecss. I built the website to feel familiar to designers who would appreciated the fluid motion and the subtle use of aesthetic influences from the Windows explorer(the categories section uses familiar icons styles that are reminiscent of the folder icons from Windows 10) and osx(the video preview in the categories section on larger screens). 
 
     The entire website has a black background with links being either white or grey depending on their function. Accents and active links however are yellow.
-    <img src="assets/images/Design.jpg">
+    <h4><img src="static/img/colour.png"></h4>
 
 
   - #### Typography
@@ -50,8 +49,8 @@ As a motion designer myself, my hope was to make a tool I would be willing to us
 
   Initial Wireframes developed at the start of the project are below:
 
-- <h4>Level 1</h4><img src="assets/images/Wireframe_level1_showing_colour_pairs.jpg" width="50%" height="50%" >
-- <h4>Level 3</h4><img src="assets/images/Wireframe_level3_showing_colour_pairs.jpg" width="50%" height="50%" >
+- <h4>Home Page</h4><img src="static/img/wireframe_home.jpg" width="50%" height="50%" >
+
 
 ## Features
 
@@ -96,7 +95,8 @@ This link launches a modal with fields to enter in a username and passowrd.
 - HTML5
 - CSS3
 - jQuery and Javascript
-- Python                                b                                                                                                
+- Python
+- Jinja                                                                                                                              
 
 ### Frameworks, Libraries & Programs Used
 
@@ -104,7 +104,7 @@ This link launches a modal with fields to enter in a username and passowrd.
 
   - The game uses Materialize's library to aid responsiveness across various screen sizes and devices. The design of the website also benefits from the design aestherics of Google's Material UI, which is design backbone for Materialize.
 
-- [JQuery](https://jquery.com) and Javascript
+- [jQuery](https://jquery.com) and Javascript
 
   - Materialize includes jQuery, which is used in the navbar, modals, forms and tooltips across the website.
   - jQuery and Javascript are used to enable dynamic scrolling and activation of Vimeo's API.
@@ -118,6 +118,10 @@ This link launches a modal with fields to enter in a username and passowrd.
 - [Python](https://www.python.org/)
 
   - Python was used to manage the website's data and enable communication with MongoDB.
+
+- [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
+
+  - Jinja is a modern and designer-friendly templating language for Python.
 
 - [MongoDB](https://fontawesome.com/)
 
@@ -146,11 +150,13 @@ This link launches a modal with fields to enter in a username and passowrd.
 
 ## Testing
 
+The implementation of the websites structure with Jinja provided an easy way to access the dictionaries available on MongoDB, which were essential in building the templates across the site. However. the fact that jinja is executed only at page load and can only communicate with python, meant that in creating mobile versions of the site, I had to duplicate certain positions of the code and utilizing media queries, I switched between the versions of the websites depending on the screen size. 
+
 The W3C CSS Validator Services was used to validate the style.css page to ensure there were no syntax errors in the code. No errors were found during the validation process.
 
 - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
 
-  <a href="assets/images/Validator Results.zip" download>Download results here</a>
+  <a href="static/img/w3c_css_validator_results.pdf" download>Download results here</a>
 
 ### Testing User Stories from User Experience (UX) Section
 
@@ -202,30 +208,29 @@ The W3C CSS Validator Services was used to validate the style.css page to ensure
 
 | Test                                     | Actions Taken                                                                                                                            | Expected Outcome                                 | Result                                                                                                                                                                                                                       |
 | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Responsiveness                           | Multiple devices on different operating systems were used with Safari, Chrome and Firefox                                                | Consistent Layout, behaviour and Icons           | I noticed certain inconsistencies on the iPhone 12, which I fixed in CSS using the appearance attribute                                                                                                                      |
-| Colour appearance on different screens   | Testing colour representation on various device screens LCD, OLED and AMOLED                                                             | Consistent gaming experience                     | Yes, the result was consistent.                                                                                                                                                                                              |
-| EmailJS functionality                    | Testing with varied accounts and inserting console-logging and consequently modal-triggers to alert the user to either a successful submission or an error | Consistent behaviour and ability to catch errors | Yes, it worked perfectly                                                                                                                                                                                                     |
-| Generating Colours and Level Progression | Console-logging and alerts to indicate when function were producing desired arrays                                                      | Consistent behaviour with stress testing         | I noticed my initial implementation of the game-pad click allowed for multiple clicks on the button which created undesirable results. I fixed this by disabling the button right after it is clicked until it is needed again. |
+| Responsiveness                           | Multiple devices on different operating systems were used with Safari, Chrome and Firefox                                                | Consistent Layout, behaviour and Icons           | I noticed certain inconsistencies on the category  selection field on iOS, which I fixed with jQuery                                                                                                                      |
+| Video gallery   | Testing the response of the hover/autoplay feature on mobile phones                                                             | Consistent behaviour and user experience across devices providing easy access to videos                     | I noticed that the video previews were impractical on smaller screens and additionally because the hover effect is not feasible on mobile devices. I decided to remove that feature for mobile devices. Replacing it  with click based accessss to  the open the category when the folder icon is clicked.                                                                                                                                                                                              |
+| CRUD(Create, read, update and delete) functionality on videos                    | Testing with over 20 videos with both an admin and a user accounts | Consitent and effective uploading to MongoDB and website                                                                                                                                                                                                     | Yes, it worked perfectly
+| CRUD functionality on categories | Testing with various categories both for adding, editing and delete categories                                                      | Consistent behaviour with stress testing         | I noticed my initial implementation of editing the categories didn't factor in the existence of the same name in the category database. I fixed this by including a string comparison in Python. |
 
 - Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
-- Additional automated testing was done using [Browser Stack](https://live.browserstack.com/)
+- Additional automated testing was done using [Browser Stack](https://live.browserstack.com/) and [Am I Responsive](http://ami.responsivedesign.is/?url=https%3A%2F%2Fmograph-gallery-project.herokuapp.com%2F).
 
 ## Deployment
 
-### GitHub Pages
+### Heroku
 
 The project was deployed to Heroku using the following steps...
 
-1. Log in to Heroku and locate the [project](https://github.com/Rexayo/click-match)
-2. At the top of the Repository (not top of page), locate the "Settings" button on the menu.
-3. Scroll down the Settings page until you locate the "GitHub Pages" Section.
-4. Under "Source", click the dropdown called "None" and select "Master Branch".
-5. The page will automatically refresh.
-6. Scroll back down through the page to locate the now published site [link](https://rexayo.github.io/click-match/) in the "GitHub Pages" section.
+1. Log in to Heroku and locate the [project](https://dashboard.heroku.com/apps/mograph-gallery-project) on the  dashboard.
+2. On the deploy tab connect the project to the [GitHub repository](https://github.com/Rexayo/mograph.gallery).
+3. After the connection is complete and all the appropriate Config Vars have been entered.
+4. Under "Domains", locate the now published site [link]( https://mograph-gallery-project.herokuapp.com/).
 
-### Making a Local Clone
 
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/Rexayo/click-match)
+### Making a Local Clone on GitHub
+
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/Rexayo/mograph.gallery/)
 2. Under the repository name, click "Clone or download".
 3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
 4. Open Git Bash
@@ -233,14 +238,14 @@ The project was deployed to Heroku using the following steps...
 6. Type `git clone`, and then paste the URL you copied in Step 3.
 
 ```
-$ git clone https://github.com/Rexayo/click-match
+$ git clone https://github.com/Rexayo/mograph.gallery/
 ```
 
 7. Press Enter. Your local clone will be created.
 
 ```
-$ git clone https://github.com/Rexayo/click-match.git
-Cloning into 'everyday-why'...
+$ git clone https://github.com/Rexayo/mograph.gallery.git
+Cloning into 'mograph.gallery'...
 remote: Enumerating objects: 140, done.
 remote: Counting objects: 100% (140/140), done.
 remote: Compressing objects: 100% (83/83), done.

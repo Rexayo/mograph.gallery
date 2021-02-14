@@ -761,7 +761,7 @@ ul.dropdown-content.select-dropdown li span:hover {
   }
 
   .card:hover {
-    background-color: none;
+    background-color:#212121 !important;
   }
 
   .card:active, .card:focus {
