@@ -341,7 +341,8 @@ def edit_category(category_id):
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
     """
-    This function is for delete categories from the database (for admin only).
+    This function is for deleting categories from the
+    database (for admin only).
     """
 
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
@@ -351,6 +352,11 @@ def delete_category(category_id):
 
 @app.route("/open_category/<category_name>")
 def open_category(category_name):
+    """
+    This function is for opening categories from the
+    database with videos unique to the active category.
+    """
+
     videos = list(mongo.db.videos.find())
 
     # create a new list of videos unique to category

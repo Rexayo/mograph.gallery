@@ -7,7 +7,7 @@
 
 mograph.gallery is an online collection of motion graphics work. Motion graphics designers or motion designers as they are often called, take pride in showcasing their work online both for inspiration and also as a digital portfolio. Before now websites that served this purpose were either Vimeo(an online video-hub similar to youtube) or Behance(a more specialised portfolio hub for all creative professions). While these are very useful, there has not been a tailored platform for motion graphics work solely. This means an often tedious process is required to search for inspiration or just to see the latest trends available. The current platform for a large collection of motion design work is on Vimeo, but this exists amidst a lot of other videos and parsing through can often be quite time-consuming.
 
-As a motion designer myself, my hope was to make a tool I would be willing to use in my creative process. I built mograph.gallery to be part of a daily workflow for motion designers who just want to access curated pieces quickly. Bearing in mind that Vimeo is the current platform where a majority of these videos currently exist. I tailored this website to be currently optimised for videos uploaded to Vimeo with a plan to add additional support in the future. Furthermore with future updates the profile section would include a fully featured bio section where career information for each user would be included. Eventually, users would have a fully functional portfolio that they can present to employers and peers alike.
+As a motion designer myself, my hope was to make a tool I would be willing to use in my creative process. I built mograph.gallery to be part of a daily workflow for motion designers who just want to access curated pieces quickly. Bearing in mind that Vimeo is the current platform where a majority of these videos currently exist. I tailored this website to be currently optimised for videos uploaded to Vimeo with a plan to add additional support in the future. Furthermore, with future updates, the profile section would include a fully-featured bio section where career information for each user would be included. Eventually, users would have a fully functional portfolio that they can present to employers and peers alike.
 
 
 ## User Experience (UX) 
@@ -102,9 +102,34 @@ This how-to section contains a breakdown of steps to take when adding a video to
 
 This link launches a modal with fields to create a username and password.
 
-### Login
+### Log in
 
 This link launches a modal with fields to enter in a username and password.
+
+### Database
+
+All of the functionality above is made possible with the aid of a database that users access as they navigate through the site. 
+There are three main dictionary collections for this site on MongoDB. These are Categories, Users and Videos.
+
+- <h4>Screenshot showing all collections used on MongoDB</h4><img src="static/img/mongodb_collections.jpg" width="50%" height="50%" >
+
+#### Categories
+- The Categories collection contains key-value pairs that represent groupings for the various videos each user uploads, in addition to a unique ID for each category. This ID is essential to enable accurate access to each category from Python and Jinja.
+These groups are created and can only be edited by the site's administrator, after editing, the collection is automatically updated to reflect those changes on MongoDB. On the website, this can be accessed on the "Explore Categories" or "Manage Categories" (admin only) pages. This is also used in the forms filled to add a video to the site as a required selection. Making sure that each video uploaded belongs to a category.
+
+- <h4>Screenshot of Categories collection on MongoDB</h4><img src="static/img/mongodb_categories.jpg" width="50%" height="50%" >
+
+#### Users
+- The Users collection contains key-value pairs that hold the login credentials for all users on the website. The keys present here are a unique ID per entry, the username and a hashed/salted version of each user's password. Password hashing is achieved with the help of werkzeug.security.
+
+These credentials are created from the website during sign up and accessed during login. Certain features of the website are unique to each user based on the connection between this collection and the Videos collection described below. A primary example of this is in the User profile page which houses videos unique to each user.
+
+- <h4>Screenshot of Users collection on MongoDB</h4><img src="static/img/mongodb_users.jpg" width="50%" height="50%" >
+
+#### Videos
+- The Video collection contains key-value pairs that describe the information about each video uploaded. This information is uploaded when the Add Video link is clicked on from the navbar and can be updated/deleted when the corresponding buttons for each video are clicked on from the Profile page. Information here is unique to each video and contains a unique ID, the video name, the category it belongs to its description, its creators, who uploaded it, and any tags the uploader would like to add to it, to make it more easily found in a search through the entire website. These tags could be words not present in the video name or its description but are relevant to the style of the video or its predominant technique. The "category_name" key here is used in conjunction with the category name key in the Categories collection. Additionally, the "added_by" key here is used in conjunction with the "username" key from the Users collection. These connections are essential to the organisation of the videos on the site enabling a personalised and curated experience for each user.
+
+- <h4>Screenshot of Videos collection on MongoDB</h4><img src="static/img/mongodb_videos.jpg" width="50%" height="50%" >
 
 ### Features Left to Implement
 
@@ -146,6 +171,10 @@ This link launches a modal with fields to enter in a username and password.
 - [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
 
   - Jinja is a modern and designer-friendly templating language for Python.
+
+- [werkzeug.security](https://werkzeug.palletsprojects.com/en/1.0.x/)
+
+  - werkzeug.security is a Web Server Gateway Interface application library, that was used to enhance security with user password salting and hashing. 
 
 - [MongoDB](https://fontawesome.com/)
 
@@ -302,4 +331,3 @@ Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-re
 ### Acknowledgements
 - My Mentor for continuous helpful feedback.
 - I received inspiration for this project from a website called [Design Inspiration](https://www.designspiration.com/). Much of functionality is also based on [Pinterest](https://www.pinterest.co.uk/) and [Behance](https://www.behance.net/) with the added bonus being that mograph.gallery has features tailored to the niche sector of the motion graphics whilst all the other are catering to a much larger audience.
-
